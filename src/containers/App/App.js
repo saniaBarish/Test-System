@@ -1,15 +1,19 @@
-import React,{Component} from "react";
-import {connect} from "react-redux";
-import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
-
-import "./App.css";
-
-import {getPhrases, phrasesSelector} from "../../reducers";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 
-class App extends Component{
+import './App.css';
+
+import { getPhrases, phrasesSelector } from '../../reducers';
+
+
+class App extends Component {
+    state = {
+      logged: false,
+    }
 
     render(){
+        
         return(
             <button onClick={this.props.getPhrases}>Hello World</button>
         )
