@@ -1,0 +1,14 @@
+.login-page{
+  height: 500px;
+  width: 300px;
+  margin: 200px auto;
+  text-align: center;
+}
+
+.login-page input{
+  margin: 5px 0;
+}
+
+.login-page :any-link{
+  text-decoration: none;
+}
