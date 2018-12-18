@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route, Switch,
+  Redirect,
+} from 'react-router-dom';
 
 
 import './App.css';
@@ -11,37 +15,35 @@ import RegistrationPage from '../../components/RegistrationPage';
 
 
 class App extends Component {
-  state = {
-    logged: true,
-  }
-
-  onLogin = () =>{
+  onLogin = () => {
     console.log('loggin');
   }
 
+  onRegistration = () => {
+    console.log('registration');
+  }
+
   render() {
-    const { logged } = this.state;
-    const { getPhrases } = this.props;
     return (
       <Router>
         <div>
           <Switch>
-            <Route path="/login" render={()=><LoginPage onLogin={this.onLogin} />} />
-            <Route path="/registration" render={() => <RegistrationPage />} />
+            <Route path="/login" render={() => <LoginPage onLogin={this.onLogin} />} />
+            <Route path="/registration" render={() => <RegistrationPage onRegistration={this.onRegistration} />} />
             <Redirect to="/login" />
           </Switch>
           {/* <RegistrationPage /> */}
         </div>
       </Router>
-    )
+    );
   }
 }
 
 export default connect(
-    state => ({
-        phrases: phrasesSelector(state)
-    }),
-    {
-        getPhrases: getPhrases,
-    }
+  (state) => ({
+    phrases: phrasesSelector(state),
+  }),
+  {
+    getPhrases,
+  },
 )(App);

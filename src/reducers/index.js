@@ -1,10 +1,10 @@
 import helloWorldReduser, {
-    phrasesSelector,
-    getPhrases,
-} from "./helloWorldReduser";
+  phrasesSelector,
+  getPhrases,
+} from './helloWorldReduser';
 
 export {
-    helloWorldReduser,
-    phrasesSelector,
-    getPhrases,
-}
+  helloWorldReduser,
+  phrasesSelector,
+  getPhrases,
+};
