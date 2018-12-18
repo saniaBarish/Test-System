@@ -35,7 +35,7 @@ const RegistrationPage = ({ onRegistration }) => {
                 <div className="input-group-prepend">
                   <span className="input-group-text">@</span>
                 </div>
-                <input type="text" className="form-control" id="username" placeholder="Username" required="" />
+                <input type="text" className="form-control" id="username" placeholder="Username" required />
                 <div className="invalid-feedback">
                   Your username is required.
                 </div>
@@ -53,7 +53,7 @@ const RegistrationPage = ({ onRegistration }) => {
               Please enter a valid email address for shipping updates.
             </div>
           </div>
-          <button className="btn btn-primary btn-lg btn-block" type="button" onClick={onRegistration}>Continue to checkout</button>
+          <button className="btn btn-primary btn-lg btn-block" type="submit" onClick={onRegistration}>Continue to checkout</button>
         </form>
       </div>
     </div>

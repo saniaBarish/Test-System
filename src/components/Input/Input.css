@@ -1,0 +1,14 @@
+.col-6 input.invalid{
+  border: 2px solid red;
+  background-color: tomato;
+}
+
+.col-6 label{
+  position: relative;
+}
+
+.col-6 span{
+  font-size: 10px;
+  float: left;
+  color: red;
+}

@@ -1,10 +1,6 @@
-import helloWorldReduser, {
-  phrasesSelector,
-  getPhrases,
-} from './helloWorldReduser';
+import { combineReducers } from 'redux';
+import loginReducer from './loginReducer';
 
-export {
-  helloWorldReduser,
-  phrasesSelector,
-  getPhrases,
-};
+export default combineReducers({
+  loginReducer,
+});

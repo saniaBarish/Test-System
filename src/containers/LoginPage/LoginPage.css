@@ -9,6 +9,11 @@
   margin: 5px 0;
 }
 
+.login-page label{
+  cursor: pointer;
+  width: 300px;
+}
+
 .login-page :any-link{
   text-decoration: none;
 }
