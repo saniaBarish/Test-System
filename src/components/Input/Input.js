@@ -4,17 +4,18 @@ import PropTypes from 'prop-types';
 import './Input.css';
 
 const Input = ({ type, id, className, placeholder, required,
-  onChange, onBlur, errorMessage, onFocus,
+  onChange, onBlur, errorMessage, onFocus, label, name,
 }) => {
   const alert = errorMessage ? <span>{errorMessage}</span> : null;
   const redBorder = errorMessage ? 'invalid' : '';
   return (
-    <div className=" col-6">
+    <div>
       <label htmlFor={id}>
+        {label}
         <input
           type={type}
           id={id}
-          name={id}
+          name={name}
           className={`${className} ${redBorder}`}
           placeholder={placeholder}
           required={required}
@@ -33,6 +34,8 @@ Input.defaultProps = {
   id: '',
   className: 'form-control',
   placeholder: '',
+  label: '',
+  name: '',
   required: false,
   onChange: () => {},
   onBlur: () => {},
@@ -50,6 +53,8 @@ Input.propTypes = {
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
   errorMessage: PropTypes.string,
+  label: PropTypes.string,
+  name: PropTypes.string,
 };
 
 export default Input;

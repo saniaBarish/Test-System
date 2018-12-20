@@ -3,58 +3,31 @@ import PropTypes from 'prop-types';
 
 import './RegistrationPage.css';
 
+import Button from '../../components/Button';
+import Navbar from '../../components/Navbar';
+import FormGroupInput from '../../components/FormGroupInput';
+
 const RegistrationPage = ({ onRegistration }) => {
   return (
-    <div className="container">
-      <div className="col-md-8 order-md-1">
-        <h4 className="mb-3">Billing address</h4>
-        <form className="needs-validation" noValidate="">
-          <div className="row">
-            <div className="col-md-6 mb-3">
-              <label htmlFor="firstName">
-                First name
-                <input type="text" className="form-control" id="firstName" placeholder="" defaultValue="" required="" />
-              </label>
-              <div className="invalid-feedback">
-                Valid first name is required.
-              </div>
-              <label htmlFor="lastName">
-                Last name
-                <input type="text" className="form-control" id="lastName" placeholder="" defaultValue="" required="" />
-              </label>
-              <div className="invalid-feedback">
-                Valid last name is required.
-              </div>
-            </div>
-          </div>
-
-          <div className="mb-3">
-            <label htmlFor="username">
-              Username
-              <div className="input-group">
-                <div className="input-group-prepend">
-                  <span className="input-group-text">@</span>
-                </div>
-                <input type="text" className="form-control" id="username" placeholder="Username" required />
-                <div className="invalid-feedback">
-                  Your username is required.
-                </div>
-              </div>
-            </label>
-          </div>
-
-          <div className="mb-3">
-            <label htmlFor="email">
-              Email
-              <span className="text-muted">(Optional)</span>
-              <input type="email" className="form-control" id="email" placeholder="you@example.com" />
-            </label>
-            <div className="invalid-feedback">
-              Please enter a valid email address for shipping updates.
-            </div>
-          </div>
-          <button className="btn btn-primary btn-lg btn-block" type="submit" onClick={onRegistration}>Continue to checkout</button>
-        </form>
+    <div className="registartion">
+      <Navbar />
+      <div className="bd-example body">
+        <div>
+          <h1>Registration Form</h1>
+        </div>
+        <FormGroupInput type="text" id="firstName" label="First Name" placeholder="First Name" />
+        <FormGroupInput type="text" id="lastName" label="Last Name" placeholder="Last Name" />
+        <FormGroupInput type="text" id="userName" label="Username" placeholder="Username" />
+        <FormGroupInput type="email" id="email" name="email" label="Email" placeholder="Email" />
+        <FormGroupInput type="password" id="password" name="password" label="Password" placeholder="Password" />
+        <FormGroupInput type="password" id="confirmPassword" name="password" label="Confirm Password" placeholder="Confirm Password" />
+        <div>
+          <Button
+            className="btn btn-primary btn-lg btn-block"
+            onClick={onRegistration}
+            value="Registration"
+          />
+        </div>
       </div>
     </div>
   );

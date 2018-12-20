@@ -1,27 +1,14 @@
-import { email, password } from './constants';
 
-const validator = require('validator');
+import validFunctions from './validationHelppers';
+import { validators } from './constants';
 
-const verifyValidation = (type, value) => {
-  if (type === email) {
-    if (validator.isEmpty(value)) {
-      return 'Please fill in the field Email';
-    }
-    if (!validator.isEmail(value)) {
-      return 'Invalid Email';
-    }
-    return '';
+const isValidator = (value) => (type) => value === type;
+
+const verifyValidation = (name, value) => {
+  if (validators.some(isValidator(name))) {
+    return validFunctions[name](value);
   }
-  if (type === password) {
-    if (validator.isEmpty(value)) {
-      return 'Please fill in the field Password';
-    }
-    if (value.length < 4) {
-      return 'Password must be at least 4 letters';
-    }
-    return '';
-  }
-  return '';
+  return new Error(`name ${name} - doesn't have validation`);
 };
 
 export default verifyValidation;

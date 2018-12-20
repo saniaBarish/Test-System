@@ -36,7 +36,7 @@ class LoginPage extends Component {
     passwordErrorMessage: '',
   }
 
-  onBlurInput = ({ target: { type } }) => this.setState({ [`${type}ErrorMessage`]: verifyValidation(type, this.props.email) });
+  onBlurInput = ({ target: { name, value } }) => this.setState({ [`${name}ErrorMessage`]: verifyValidation(name, value) });
 
   onFocusInput = ({ target: { type } }) => this.setState({ [`${type}ErrorMessage`]: '' });
 
@@ -64,6 +64,7 @@ class LoginPage extends Component {
           <Input
             type="email"
             id="email"
+            name="email"
             required={true}
             className="form-control"
             placeholder="Email address"
@@ -75,6 +76,7 @@ class LoginPage extends Component {
           <Input
             type="password"
             id="password"
+            name="password"
             className="form-control"
             placeholder="Password"
             onChange={this.onChangeInput}
