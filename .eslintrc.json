@@ -2,6 +2,10 @@
   "parser": "babel-eslint",
     "extends": "airbnb",
     "rules": {
+      "react/destructuring-assignment": 0,
+      "no-unused-expressions": 0,
+      "react/jsx-boolean-value": 0,
+      "object-curly-newline": 0,
       "no-underscore-dangle": ["error", { "allow": ["__REDUX_DEVTOOLS_EXTENSION__"] }],
       "arrow-body-style": 0,
       "arrow-parens": ["error", "always"],
