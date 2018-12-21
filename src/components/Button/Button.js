@@ -5,7 +5,7 @@ import './Button.css';
 
 const Button = ({ className, onClick, value }) => {
   return (
-    <div className="col-6 button">
+    <div className="button">
       <button
         type="button"
         className={className}

@@ -1,0 +1,40 @@
+.registartion{
+  max-width: 1280px;
+  max-height: 720px;
+}
+
+.navbar.navbar-expand-md.navbar-dark.bg-dark.fixed-top{
+  padding: 0;
+  margin: 0px;
+  position: fixed;
+  top: 0px;
+  height: 60px;
+}
+
+.bd-example.body{
+  position: absolute;
+  top: 90px;
+  left: 220px;
+  width: 960px;
+  text-align: center;
+  padding: 10px;
+  border: solid #f8f9fa;
+  border-radius: 20%;
+}
+
+.form-group{
+  text-align: left;
+  padding: 0 100px 0 100px;
+  margin-bottom: 5px;
+}
+.form-group label{
+  width: 700px;
+  padding: 15px 15px 25px 15px;
+  border: solid #f8f9fa;
+}
+
+h2{
+  color: whitesmoke;
+  margin: 10px 30px 0px 0px;
+  padding: 0;
+}
