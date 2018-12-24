@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './Input.css';
 
-const Input = ({ type, id, className, placeholder, required,
+const Input = ({ type, id, className, placeholder,
   onChange, onBlur, errorMessage, onFocus, label, name,
 }) => {
   const alert = errorMessage ? <span>{errorMessage}</span> : null;
@@ -18,7 +18,6 @@ const Input = ({ type, id, className, placeholder, required,
           name={name}
           className={`${className} ${redBorder}`}
           placeholder={placeholder}
-          required={required}
           onChange={onChange}
           onBlur={onBlur}
           onFocus={onFocus}
@@ -36,7 +35,6 @@ Input.defaultProps = {
   placeholder: '',
   label: '',
   name: '',
-  required: false,
   onChange: () => {},
   onBlur: () => {},
   onFocus: () => {},
@@ -48,7 +46,6 @@ Input.propTypes = {
   id: PropTypes.string,
   className: PropTypes.string,
   placeholder: PropTypes.string,
-  required: PropTypes.bool,
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
