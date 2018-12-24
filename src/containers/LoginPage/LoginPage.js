@@ -14,7 +14,7 @@ import {
 } from '../../reducers/loginReducer';
 import { email, password } from '../helppers/constants';
 import verifyValidation from '../helppers/verifyValidation';
-import onLoginAsync from '../../reducers/actions';
+import { onLoginAsync } from '../../reducers/actions';
 
 class LoginPage extends Component {
   static propTypes = {
@@ -38,7 +38,7 @@ class LoginPage extends Component {
 
   onBlurInput = ({ target: { name, value } }) => this.setState({ [`${name}ErrorMessage`]: verifyValidation(name, value) });
 
-  onFocusInput = ({ target: { type } }) => this.setState({ [`${type}ErrorMessage`]: '' });
+  onFocusInput = ({ target: { name } }) => this.setState({ [`${name}ErrorMessage`]: '' });
 
   onChangeInput = ({ target: { name, value } }) => this.props.onUpdate({ name, value });
 

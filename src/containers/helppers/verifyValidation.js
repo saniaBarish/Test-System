@@ -8,7 +8,7 @@ const verifyValidation = (name, value) => {
   if (validators.some(isValidator(name))) {
     return validFunctions[name](value);
   }
-  return new Error(`name ${name} - doesn't have validation`);
+  return null;
 };
 
 export default verifyValidation;
