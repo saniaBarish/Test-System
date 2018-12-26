@@ -17,6 +17,7 @@
   padding: 10px;
   border: solid skyblue;
   border-radius: 20%;
+  background-color: aliceblue;
 }
 
 .form-group{
@@ -27,7 +28,6 @@
 .form-group label{
   width: 700px;
   padding: 15px 15px 25px 15px;
-  border: solid #f8f9fa;
 }
 
 h2{

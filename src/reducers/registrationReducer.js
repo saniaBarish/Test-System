@@ -8,12 +8,15 @@ import {
   email,
   password,
   confirmPassword,
-} from '../containers/helppers/constants';
+  err,
+} from '../helppers/constants';
 
 export const onUpdate = createAction('ON_UPDATE_REGISTRATION_PAGE');
+export const onRegistrationError = createAction('ON_ERROR_ REGISTRATION_PAGE');
 
 const registartionPage = handleActions({
   [onUpdate]: (state, { payload: { name, value } }) => ({ ...state, [name]: value }),
+  [onRegistrationError]: (state, { payload: { value } }) => ({ ...state, [err]: value }),
 },
 {
   [firstName]: '',
@@ -22,6 +25,7 @@ const registartionPage = handleActions({
   [email]: '',
   [password]: '',
   [confirmPassword]: '',
+  [err]: '',
 });
 
 const REDUCER_NAME = 'registrationReducer';
@@ -32,9 +36,18 @@ export const lastNameSelector = createSelector(stateSelector, (state) => get(sta
 export const userNameSelector = createSelector(stateSelector, (state) => get(state, userName));
 export const emailSelector = createSelector(stateSelector, (state) => get(state, email));
 export const passwordSelector = createSelector(stateSelector, (state) => get(state, password));
+export const errSelector = createSelector(stateSelector, (state) => get(state, err));
 export const confirmPasswordSelector = createSelector(
   stateSelector,
   (state) => get(state, confirmPassword),
 );
+export const registrationSelector = (state) => ({
+  [firstName]: firstNameSelector(state),
+  [lastName]: lastNameSelector(state),
+  [userName]: userNameSelector(state),
+  [email]: emailSelector(state),
+  [password]: passwordSelector(state),
+  [confirmPassword]: confirmPasswordSelector(state),
+});
 
 export default registartionPage;

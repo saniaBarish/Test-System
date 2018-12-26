@@ -4,6 +4,20 @@ export const firstName = 'firstName';
 export const lastName = 'lastName';
 export const userName = 'userName';
 export const confirmPassword = 'confirmPassword';
+export const err = 'err';
+export const users = 'users';
+export const registration = 'registration';
+export const login = 'login';
+// export const user = {
+//   [firstName]: '',
+//   [lastName]: '',
+//   [userName]: '',
+//   [email]: '',
+//   [password]: '',
+//   [confirmPassword]: '',
+// };
+export const user = 'user';
+
 
 export const validators = [
   email,
@@ -12,4 +26,5 @@ export const validators = [
   lastName,
   userName,
   confirmPassword,
+  err,
 ];

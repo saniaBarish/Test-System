@@ -7,14 +7,17 @@ import './LoginPage.css';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import Modal from '../../components/Modal';
 import {
   emailSelector,
   passwordSelector,
+  errSelector,
   onUpdate,
+  onLoginError,
 } from '../../reducers/loginReducer';
-import { email, password } from '../helppers/constants';
-import verifyValidation from '../helppers/verifyValidation';
-import { onLoginAsync } from '../../reducers/actions';
+import { email, password } from '../../helppers/constants';
+import verifyValidation from '../../helppers/verifyValidation';
+import { onLoginAsync } from '../../actions';
 
 class LoginPage extends Component {
   static propTypes = {
@@ -22,6 +25,7 @@ class LoginPage extends Component {
     email: () => '',
     password: () => '',
     onLoginAsync: () => {},
+    onLoginError: () => {},
   }
 
   static defaultProps = {
@@ -29,6 +33,7 @@ class LoginPage extends Component {
     email: PropTypes.func,
     password: PropTypes.func,
     onLoginAsync: PropTypes.func,
+    onLoginError: PropTypes.func,
   }
 
   state={
@@ -36,9 +41,19 @@ class LoginPage extends Component {
     passwordErrorMessage: '',
   }
 
+  changeModalVisible = () => this.props.onLoginError({ name: '', value: '' });
+
+  onClickModal = (e) => {
+    e.preventDefault();
+    this.props.onLoginError({ name: '', value: '' });
+  }
+
   onBlurInput = ({ target: { name, value } }) => this.setState({ [`${name}ErrorMessage`]: verifyValidation(name, value) });
 
-  onFocusInput = ({ target: { name } }) => this.setState({ [`${name}ErrorMessage`]: '' });
+  onFocusInput = ({ target: { name } }) => {
+    this.setState({ [`${name}ErrorMessage`]: '' });
+    this.changeModalVisible();
+  };
 
   onChangeInput = ({ target: { name, value } }) => this.props.onUpdate({ name, value });
 
@@ -59,6 +74,7 @@ class LoginPage extends Component {
     const { emailErrorMessage, passwordErrorMessage } = this.state;
     return (
       <div className="login-page">
+        <Modal url="/" />
         <div className="form-signin">
           <h1 className="h3 mb-3 font-weight-normal">Please login</h1>
           <Input
@@ -98,9 +114,11 @@ export default connect(
   (state) => ({
     email: emailSelector(state),
     password: passwordSelector(state),
+    err: errSelector(state),
   }),
   {
     onUpdate,
     onLoginAsync,
+    onLoginError,
   },
 )(LoginPage);
