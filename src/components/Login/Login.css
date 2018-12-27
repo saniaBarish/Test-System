@@ -1,0 +1,29 @@
+.login{
+  height: 400px;
+  width: 400px;
+  margin: auto;
+  text-align: center;
+  border: 2px solid skyblue;
+  border-radius: 20px;
+  background-color: aliceblue;
+}
+
+.form-signin{
+  margin: 50px auto;
+}
+
+.login input{
+  margin: 5px 0;
+}
+
+.login label{
+  cursor: pointer;
+  width: 300px;
+}
+
+.login :any-link{
+  float: none;
+  text-decoration: none;
+  margin: auto;
+  height: 48px;
+}

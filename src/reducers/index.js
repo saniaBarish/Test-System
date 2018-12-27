@@ -1,10 +1,14 @@
 import { combineReducers } from 'redux';
 import loginReducer from './loginReducer';
 import registrationReducer from './registrationReducer';
-import personalAreaReducer from './personalAreaReducer';
+import profileReducer from './profileReducer';
+import loadingReducer from './loadingReducer';
+import questionReducer from './questionReducer';
 
 export default combineReducers({
   loginReducer,
   registrationReducer,
-  personalAreaReducer,
+  profileReducer,
+  loadingReducer,
+  questionReducer,
 });
