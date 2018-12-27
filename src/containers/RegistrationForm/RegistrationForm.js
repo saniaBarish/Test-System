@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
-import verifyValidation from '../helppers/verifyValidation';
+import Modal from '../../components/Modal';
+import verifyValidation from '../../helppers/verifyValidation';
 
 import {
   firstName,
@@ -13,19 +14,22 @@ import {
   email,
   password,
   confirmPassword,
-} from '../helppers/constants';
+  err,
+} from '../../helppers/constants';
 
 import {
   onUpdate,
+  onRegistrationError,
   firstNameSelector,
   lastNameSelector,
   userNameSelector,
   emailSelector,
   passwordSelector,
   confirmPasswordSelector,
+  errSelector,
 } from '../../reducers/registrationReducer';
 
-import { onRegistrationAsync } from '../../reducers/actions';
+import { onRegistrationAsync } from '../../actions';
 
 import './RegistrationForm.css';
 
@@ -33,23 +37,30 @@ class FormGroupInput extends Component {
   static defaultProps = {
     onUpdate: () => {},
     onRegistrationAsync: () => {},
+    onRegistrationError: () => {},
     password: '',
     firstName: '',
     lastName: '',
     userName: '',
     email: '',
     confirmPassword: '',
+    // err: {
+    //   name: '',
+    //   value: '',
+    // },
   }
 
   static propTypes = {
     onUpdate: PropTypes.func,
     onRegistrationAsync: PropTypes.func,
+    onRegistrationError: PropTypes.func,
     password: PropTypes.string,
     firstName: PropTypes.string,
     lastName: PropTypes.string,
     userName: PropTypes.string,
     email: PropTypes.string,
     confirmPassword: PropTypes.string,
+    // err: PropTypes.objectOf(PropTypes.string),
   }
 
   state={
@@ -61,11 +72,21 @@ class FormGroupInput extends Component {
     confirmPasswordErrorMessage: '',
   }
 
-  onChangeInput = ({ target: { name, value } }) => this.props.onUpdate({ name, value });
+  changeModalVisible = () => this.props.onRegistrationError({ name: '', value: '' });
+
+  onClickModal = (e) => {
+    e.preventDefault();
+    this.changeModalVisible();
+  }
+
+  onChangeInput = ({ target: { name, value } }) => this.props.onUpdate({ name, value })
 
   onBlurInput = ({ target: { name, value } }) => this.setState({ [`${name}ErrorMessage`]: verifyValidation(name, value) });
 
-  onFocusInput = ({ target: { name } }) => this.setState({ [`${name}ErrorMessage`]: '' });
+  onFocusInput = ({ target: { name } }) => {
+    this.setState({ [`${name}ErrorMessage`]: '' });
+    this.changeModalVisible();
+  };
 
   onBlurInputConfirmPassword = ({ target: { name, value } }) => {
     this.setState({ [`${name}ErrorMessage`]: verifyValidation(name, { value, password: this.props.password }) });
@@ -98,8 +119,10 @@ class FormGroupInput extends Component {
       passwordErrorMessage,
       confirmPasswordErrorMessage,
     } = this.state;
+
     return (
       <div className="form-group">
+        <Modal url="/" onClick={this.onClickModal} />
         <Input
           type="text"
           id={firstName}
@@ -126,8 +149,8 @@ class FormGroupInput extends Component {
           type="text"
           id={userName}
           name={userName}
-          label="Username"
-          placeholder="Username"
+          label="User Name"
+          placeholder="User Name"
           onChange={this.onChangeInput}
           onBlur={this.onBlurInput}
           onFocus={this.onFocusInput}
@@ -183,9 +206,11 @@ export default connect(
     [email]: emailSelector(state),
     [password]: passwordSelector(state),
     [confirmPassword]: confirmPasswordSelector(state),
+    [err]: errSelector(state),
   }),
   {
     onUpdate,
     onRegistrationAsync,
+    onRegistrationError,
   },
 )(FormGroupInput);

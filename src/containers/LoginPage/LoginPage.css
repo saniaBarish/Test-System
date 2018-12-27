@@ -1,8 +1,15 @@
 .login-page{
-  height: 500px;
-  width: 300px;
-  margin: 200px auto;
+  height: 400px;
+  width: 400px;
+  margin: 100px auto;
   text-align: center;
+  border: 2px solid skyblue;
+  border-radius: 20px;
+  background-color: aliceblue;
+}
+
+.form-signin{
+  margin: 50px auto;
 }
 
 .login-page input{
@@ -15,5 +22,8 @@
 }
 
 .login-page :any-link{
+  float: none;
   text-decoration: none;
+  margin: auto;
+  height: 48px;
 }
