@@ -4,11 +4,15 @@ import registrationReducer from './registrationReducer';
 import profileReducer from './profileReducer';
 import loadingReducer from './loadingReducer';
 import questionReducer from './questionReducer';
+import answerReducer from './answerReducer';
+import testReducer from './testReducer';
 
 export default combineReducers({
   loginReducer,
   registrationReducer,
   profileReducer,
   loadingReducer,
+  answerReducer,
   questionReducer,
+  testReducer,
 });

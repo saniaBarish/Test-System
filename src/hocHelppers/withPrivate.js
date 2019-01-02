@@ -22,12 +22,6 @@ const withPrivat = (View) => {
       }
     }
 
-    componentDidUpdate() {
-      if (!this.props.authorization) {
-        this.props.dispatch(push('/login'));
-      }
-    }
-
     onLogout = () => {
       this.props.onLogout();
     }
@@ -36,7 +30,7 @@ const withPrivat = (View) => {
       return (
         <React.Fragment>
           <Navbar login={this.props.authorization} onClick={this.onLogout} />
-          <View />
+          <View dispatch={this.props.dispatch} />
         </React.Fragment>
       );
     }
