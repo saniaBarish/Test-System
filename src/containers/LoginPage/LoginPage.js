@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import './LoginPage.css';
 
-import Input from '../../components/Input';
-import Button from '../../components/Button';
-import Modal from '../../components/Modal';
 import {
   emailSelector,
   passwordSelector,
@@ -15,23 +12,27 @@ import {
   onUpdate,
   onLoginError,
 } from '../../reducers/loginReducer';
+import { loadingSelector, onLoading, offLoading } from '../../reducers/loadingReducer';
 import { email, password } from '../../helppers/constants';
 import verifyValidation from '../../helppers/verifyValidation';
 import { onLoginAsync } from '../../actions';
+import Navbar from '../Navbar';
+import Login from '../../components/Login';
+import Spinner from '../../components/Spinner';
 
 class LoginPage extends Component {
-  static propTypes = {
+  static defaultProps = {
     onUpdate: () => {},
-    email: () => '',
-    password: () => '',
+    email: '',
+    password: '',
     onLoginAsync: () => {},
     onLoginError: () => {},
   }
 
-  static defaultProps = {
+  static propTypes = {
     onUpdate: PropTypes.func,
-    email: PropTypes.func,
-    password: PropTypes.func,
+    email: PropTypes.string,
+    password: PropTypes.string,
     onLoginAsync: PropTypes.func,
     onLoginError: PropTypes.func,
   }
@@ -59,11 +60,14 @@ class LoginPage extends Component {
 
   onSubmit = () => {
     const { emailErrorMessage, passwordErrorMessage } = this.state;
-    !emailErrorMessage && !passwordErrorMessage && this.props.onLoginAsync();
+    if (!emailErrorMessage && !passwordErrorMessage) {
+      this.props.onLoginAsync(this.onLoadingEnd);
+    }
   }
 
   onClickLogin = () => {
     const { email: mail, password: pas } = this.props;
+    this.props.onLoading();
     this.setState({
       emailErrorMessage: verifyValidation(email, mail),
       passwordErrorMessage: verifyValidation(password, pas),
@@ -72,53 +76,39 @@ class LoginPage extends Component {
 
   render() {
     const { emailErrorMessage, passwordErrorMessage } = this.state;
+    const content = this.props.loading ? <Spinner /> : (
+      <Login
+        onChangeInput={this.onChangeInput}
+        emailErrorMessage={emailErrorMessage}
+        onBlurInput={this.onBlurInput}
+        onFocusInput={this.onFocusInput}
+        passwordErrorMessage={passwordErrorMessage}
+        onClickLogin={this.onClickLogin}
+      />
+    );
     return (
       <div className="login-page">
-        <Modal url="/" />
-        <div className="form-signin">
-          <h1 className="h3 mb-3 font-weight-normal">Please login</h1>
-          <Input
-            type="email"
-            id="email"
-            name="email"
-            required={true}
-            className="form-control"
-            placeholder="Email address"
-            onChange={this.onChangeInput}
-            errorMessage={emailErrorMessage}
-            onBlur={this.onBlurInput}
-            onFocus={this.onFocusInput}
-          />
-          <Input
-            type="password"
-            id="password"
-            name="password"
-            className="form-control"
-            placeholder="Password"
-            onChange={this.onChangeInput}
-            errorMessage={passwordErrorMessage}
-            onBlur={this.onBlurInput}
-            onFocus={this.onFocusInput}
-          />
-          <Button value="Login" onClick={this.onClickLogin} />
-          <Link to="/registration">
-            <Button className="btn btn-danger btn-lg btn-block" value="Registration" />
-          </Link>
-        </div>
+        <Navbar />
+        {content}
       </div>
     );
   }
 }
 
-export default connect(
-  (state) => ({
-    email: emailSelector(state),
-    password: passwordSelector(state),
-    err: errSelector(state),
-  }),
+export default withRouter(connect(
+  (state) => {
+    return ({
+      email: emailSelector(state),
+      password: passwordSelector(state),
+      err: errSelector(state),
+      loading: loadingSelector(state),
+    });
+  },
   {
     onUpdate,
     onLoginAsync,
     onLoginError,
+    onLoading,
+    offLoading,
   },
-)(LoginPage);
+)(LoginPage));

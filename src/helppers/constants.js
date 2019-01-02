@@ -8,15 +8,8 @@ export const err = 'err';
 export const users = 'users';
 export const registration = 'registration';
 export const login = 'login';
-// export const user = {
-//   [firstName]: '',
-//   [lastName]: '',
-//   [userName]: '',
-//   [email]: '',
-//   [password]: '',
-//   [confirmPassword]: '',
-// };
 export const user = 'user';
+export const authorization = 'authorization';
 
 
 export const validators = [

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -16,6 +17,8 @@ import {
   confirmPassword,
   err,
 } from '../../helppers/constants';
+
+import { onLoading } from '../../reducers/loadingReducer';
 
 import {
   onUpdate,
@@ -44,10 +47,6 @@ class FormGroupInput extends Component {
     userName: '',
     email: '',
     confirmPassword: '',
-    // err: {
-    //   name: '',
-    //   value: '',
-    // },
   }
 
   static propTypes = {
@@ -60,7 +59,6 @@ class FormGroupInput extends Component {
     userName: PropTypes.string,
     email: PropTypes.string,
     confirmPassword: PropTypes.string,
-    // err: PropTypes.objectOf(PropTypes.string),
   }
 
   state={
@@ -93,7 +91,10 @@ class FormGroupInput extends Component {
   }
 
   onSubmit = () => {
-    Object.values(this.state).every((elem) => !elem) && this.props.onRegistrationAsync();
+    if (Object.values(this.state).every((elem) => !elem)) {
+      this.props.onLoading();
+      this.props.onRegistrationAsync();
+    }
   }
 
   onClickRegistration = () => {
@@ -122,6 +123,9 @@ class FormGroupInput extends Component {
 
     return (
       <div className="form-group">
+        <div>
+          <h1>Registration Form</h1>
+        </div>
         <Modal url="/" onClick={this.onClickModal} />
         <Input
           type="text"
@@ -198,7 +202,7 @@ class FormGroupInput extends Component {
   }
 }
 
-export default connect(
+export default withRouter(connect(
   (state) => ({
     [firstName]: firstNameSelector(state),
     [lastName]: lastNameSelector(state),
@@ -212,5 +216,6 @@ export default connect(
     onUpdate,
     onRegistrationAsync,
     onRegistrationError,
+    onLoading,
   },
-)(FormGroupInput);
+)(FormGroupInput));

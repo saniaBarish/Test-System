@@ -11,19 +11,13 @@ const registrationPromis = ({ data }) => {
           reject(new Error('userName'));
         } else {
           localStorage.setItem(users, JSON.stringify([...usersLocal, data]));
-          resolve({
-            status: 200,
-            result: '',
-          });
+          resolve(data);
         }
       } else {
         localStorage.setItem(users, JSON.stringify([data]));
-        resolve({
-          status: 200,
-          result: '',
-        });
+        resolve(data);
       }
-    }, 500);
+    }, 2000);
   });
 };
 
@@ -38,7 +32,7 @@ const loginPromise = ({ data }) => {
         return user.email === data.email && user.password === data.password;
       });
       userData.length ? resolve(userData[0]) : reject(new Error('Wrong email or password'));
-    }, 500);
+    }, 2000);
   });
 };
 

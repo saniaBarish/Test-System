@@ -1,29 +1,19 @@
 .login-page{
+  margin: 0;
+  padding-top: 200px;
+}
+
+.lds-double-ring{
+  margin: auto;
+  top: 200px;
+}
+
+.login-page .lds-css.ng-scope{
   height: 400px;
   width: 400px;
-  margin: 100px auto;
+  margin: auto;
   text-align: center;
   border: 2px solid skyblue;
   border-radius: 20px;
   background-color: aliceblue;
-}
-
-.form-signin{
-  margin: 50px auto;
-}
-
-.login-page input{
-  margin: 5px 0;
-}
-
-.login-page label{
-  cursor: pointer;
-  width: 300px;
-}
-
-.login-page :any-link{
-  float: none;
-  text-decoration: none;
-  margin: auto;
-  height: 48px;
 }

@@ -1,0 +1,16 @@
+.navbar.navbar-expand-md.navbar-dark.bg-dark.fixed-top ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar.navbar-expand-md.navbar-dark.bg-dark.fixed-top li{
+  float: left;
+  margin: 0px 5px;
+  padding: 5px;
+}
+
+.navbar.navbar-expand-md.navbar-dark.bg-dark.fixed-top li#login{
+  position: fixed;
+  right: 5px;
+}

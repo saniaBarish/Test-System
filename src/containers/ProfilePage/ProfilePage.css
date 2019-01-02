@@ -1,0 +1,36 @@
+.update {
+  position: absolute;
+  top: 300px;
+}
+
+.profile-page-body{
+  padding-top: 150px;
+}
+
+.profile-page-data{
+  margin: auto;
+  height: 700px;
+  width: 500px;
+  border: 2px solid skyblue;
+  border-radius: 20px;
+  background-color: aliceblue;
+}
+
+.profile-page-data .list-group{
+  padding-top: 50px;
+  float: left;
+  width: 248px;
+}
+
+.profile-img{
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  background-color: silver;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.profile-page-data h2{
+  font-size: 60px;
+}

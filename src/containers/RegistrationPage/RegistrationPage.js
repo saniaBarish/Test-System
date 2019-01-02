@@ -1,22 +1,27 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import './RegistrationPage.css';
 
-import Navbar from '../../components/Navbar';
+import { loadingSelector } from '../../reducers/loadingReducer';
+import Navbar from '../Navbar';
 import RegistrationForm from '../RegistrationForm';
+import Spinner from '../../components/Spinner';
 
-const RegistrationPage = () => {
+const RegistrationPage = ({ loading }) => {
+  const content = loading ? <Spinner /> : <RegistrationForm />;
   return (
     <div className="registartion">
       <Navbar />
       <div className="bd-example body">
-        <div>
-          <h1>Registration Form</h1>
-        </div>
-        <RegistrationForm />
+        {content}
       </div>
     </div>
   );
 };
 
-export default RegistrationPage;
+export default connect(
+  (state) => ({
+    loading: loadingSelector(state),
+  }),
+)(RegistrationPage);

@@ -1,22 +1,24 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route, Switch,
-  Redirect,
-} from 'react-router-dom';
+import { Router, Route } from 'react-router';
+import { Redirect, Switch } from 'react-router-dom';
 
 import './App.css';
 
 import LoginPage from '../LoginPage';
 import RegistrationPage from '../RegistrationPage';
+import { PrivateProfilePage, PrivateTestsPage } from '../../components/PrivateComponent';
+
+import { history } from '../../store/store';
 
 const App = () => {
   return (
-    <Router>
-      <div>
+    <Router history={history}>
+      <div className="my-app">
         <Switch>
-          <Route path="/login" render={() => <LoginPage />} />
-          <Route path="/registration" render={() => <RegistrationPage />} />
+          <Route path="/profile" render={() => <PrivateProfilePage />} />
+          <Route path="/tests" render={() => <PrivateTestsPage />} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/registration" component={RegistrationPage} />
           <Redirect to="/login" />
         </Switch>
       </div>
