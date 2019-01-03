@@ -5,13 +5,14 @@ import './Input.css';
 
 const Input = ({ type, id, className, placeholder,
   onChange, onBlur, errorMessage, onFocus, label, name,
+  checked, value,
 }) => {
   const alert = errorMessage ? <span>{errorMessage}</span> : null;
   const redBorder = errorMessage ? 'invalid' : '';
   return (
     <div>
       <label htmlFor={id}>
-        {label}
+        <label htmlFor={id}>{label}</label>
         <input
           type={type}
           id={id}
@@ -21,6 +22,8 @@ const Input = ({ type, id, className, placeholder,
           onChange={onChange}
           onBlur={onBlur}
           onFocus={onFocus}
+          defaultChecked={checked}
+          value={value}
         />
         {alert}
       </label>
@@ -35,6 +38,8 @@ Input.defaultProps = {
   placeholder: '',
   label: '',
   name: '',
+  value: undefined,
+  checked: false,
   onChange: () => {},
   onBlur: () => {},
   onFocus: () => {},
@@ -52,6 +57,11 @@ Input.propTypes = {
   errorMessage: PropTypes.string,
   label: PropTypes.string,
   name: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+  ]),
+  checked: PropTypes.bool,
 };
 
 export default Input;

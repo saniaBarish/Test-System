@@ -9,7 +9,7 @@ const usersPromise = new Promise((resolve, reject) => {
 
 const get = (url) => {
   if (url === `/${users}`) {
-    return usersPromise;
+    return usersPromise();
   }
 };
 

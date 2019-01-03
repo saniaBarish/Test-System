@@ -10,6 +10,8 @@ export const registration = 'registration';
 export const login = 'login';
 export const user = 'user';
 export const authorization = 'authorization';
+export const CREATE_TEST = 'create_test';
+export const tests = 'tests';
 
 
 export const validators = [

@@ -1,0 +1,13 @@
+.create-test-page{
+  margin: 0;
+  padding-top: 100px;
+}
+
+.radio-input{
+  float: left;
+  margin-left: 5px;
+}
+
+.my-radio{
+  /* text-align: center; */
+}
