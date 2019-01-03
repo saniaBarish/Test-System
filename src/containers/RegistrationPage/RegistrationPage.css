@@ -1,8 +1,9 @@
 .registartion{
   margin: auto;
-  padding-top: 125px;
-  height: 900px;
-  width: 1600px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  /* height: 900px;
+  width: 1600px; */
 }
 
 .navbar.navbar-expand-md.navbar-dark.bg-dark.fixed-top{
@@ -13,7 +14,7 @@
 
 .bd-example.body{
   margin: auto;
-  width: 900px;
+  width: 800px;
   text-align: center;
   padding: 10px;
   border: solid skyblue;
@@ -27,8 +28,8 @@
   margin-bottom: 5px;
 }
 .form-group label{
-  width: 700px;
-  padding: 15px 15px 25px 15px;
+  width: 600px;
+  padding: 10px;
 }
 
 .registartion h2{

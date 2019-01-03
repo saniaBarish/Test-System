@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './ItemList.css';
 
-const ItemList = ({ elements, className, lable }) => {
+const ItemList = ({ elements, className, label, message }) => {
   const list = elements.map((element) => {
     if ((typeof element) === 'string') {
       return <li key={element} className={className}>{element}</li>;
@@ -13,14 +13,12 @@ const ItemList = ({ elements, className, lable }) => {
     }
     return null;
   });
-  if (list.length === 0) {
-    return null;
-  }
+  const haveMessage = message ? <li className={className} key={message}>{message}</li> : null;
   return (
     <div>
-      <h2 className="item-list-header">{lable}</h2>
+      <h2 className="item-list-header">{label}</h2>
       <ul className="list-group">
-        {list}
+        {list.length === 0 ? haveMessage : list}
       </ul>
     </div>
   );
@@ -29,13 +27,15 @@ const ItemList = ({ elements, className, lable }) => {
 ItemList.defaultProps = {
   elements: [],
   className: 'list-group-item list-group-item-action',
-  lable: '',
+  label: '',
+  message: '',
 };
 
 ItemList.propTypes = {
   elements: PropTypes.array,
   className: PropTypes.string,
-  lable: PropTypes.string,
+  label: PropTypes.string,
+  message: PropTypes.string,
 };
 
 export default ItemList;

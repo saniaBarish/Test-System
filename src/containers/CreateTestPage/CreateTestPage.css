@@ -3,11 +3,28 @@
   padding-top: 100px;
 }
 
+.create-test-page-header{
+  margin: 0 0 0 60px;
+}
+
 .radio-input{
   float: left;
   margin-left: 5px;
 }
 
-.my-radio{
-  /* text-align: center; */
+.questions-select{
+  border: 2px solid skyblue;
+  float: left;
+  padding: 30px;
+  margin: 0 30px 10px 30px;
+  border-radius: 20px;
+  background-color: whitesmoke;
+}
+
+.btn-create-question{
+  width: 600px;
+}
+
+.questions{
+  width: 600px;
 }
