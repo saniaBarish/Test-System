@@ -45,5 +45,6 @@ export default connect(
   {
     createTest,
     updateTestValue,
+    dispatch: (dispatch) => dispatch,
   },
 )(TestsPage);
