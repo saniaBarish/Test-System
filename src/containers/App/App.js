@@ -18,11 +18,11 @@ import ProfilePage from '../ProfilePage';
 import TestPage from '../TestsPage';
 import CreateTestPage from '../CreateTestPage';
 
-const App = ({ access, onLogout }) => {
+const App = ({ access, onLogout: onClick }) => {
   return (
     <Router history={history}>
       <div className="my-app">
-        <Navbar access={access} onClick={onLogout} />
+        <Navbar access={access} onClick={onClick} />
         <Switch>
           <Route path="/login" component={LoginPage} />
           <Route path="/registration" component={RegistrationPage} />
