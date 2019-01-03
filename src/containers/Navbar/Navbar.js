@@ -6,9 +6,9 @@ import './Navbar.css';
 
 import ProfileNavbarItems from '../../components/ProfileNavbarItems';
 
-const Navbar = ({ login, onClick }) => {
-  const loginLable = login ? 'Logout' : 'Login';
-  const profile = login ? <ProfileNavbarItems /> : null;
+const Navbar = ({ access, onClick }) => {
+  const loginLable = access ? 'Logout' : 'Login';
+  const profile = access ? <ProfileNavbarItems /> : null;
   return (
     <div className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
       <ul>
@@ -23,11 +23,11 @@ const Navbar = ({ login, onClick }) => {
 };
 
 Navbar.defaultProps = {
-  login: false,
+  access: false,
 };
 
 Navbar.propTypes = {
-  login: PropTypes.bool,
+  access: PropTypes.bool,
 };
 
 export default Navbar;
