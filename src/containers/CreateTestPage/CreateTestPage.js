@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import './CreateTestPage.css';
 
@@ -20,6 +21,16 @@ class CreateTestPage extends Component {
     );
   }
 }
+
+CreateTestPage.defaultProps = {
+  testName: '',
+  questions: [],
+};
+
+CreateTestPage.propTypes = {
+  testName: PropTypes.string,
+  questions: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object, PropTypes.string])),
+};
 
 export default connect(
   (state) => ({

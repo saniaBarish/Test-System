@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './QuestionSelect.css';
 
@@ -23,6 +24,16 @@ const QuestionSelect = ({ questions, testName }) => {
       </div>
     </div>
   );
+};
+
+QuestionSelect.defaultProps = {
+  questions: [],
+  testName: '',
+};
+
+QuestionSelect.propTypes = {
+  questions: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
+  testName: PropTypes.string,
 };
 
 export default QuestionSelect;
