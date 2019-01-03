@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { push } from 'react-router-redux';
 import PropTypes from 'prop-types';
 
-import Navbar from '../containers/Navbar';
-
 const withPrivat = (View) => {
   return class extends Component {
     static propTypes = {
@@ -29,7 +27,6 @@ const withPrivat = (View) => {
     render() {
       return (
         <React.Fragment>
-          <Navbar login={this.props.authorization} onClick={this.onLogout} />
           <View dispatch={this.props.dispatch} />
         </React.Fragment>
       );
