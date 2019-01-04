@@ -8,7 +8,10 @@ import './App.css';
 
 import { history } from '../../store/store';
 import { authorizationSelector, onLogout } from '../../reducers/profileReducer';
-import { CREATE_TEST } from '../../helppers/constants';
+import {
+  CREATE_TEST,
+  QUESTION_PAGE,
+} from '../../helppers/constants';
 
 import PrivateRoute from '../PrivateRoute';
 import LoginPage from '../LoginPage';
@@ -17,21 +20,23 @@ import RegistrationPage from '../RegistrationPage';
 import ProfilePage from '../ProfilePage';
 import TestPage from '../TestsPage';
 import CreateTestPage from '../CreateTestPage';
+import QuestionPage from '../QuestionPage';
 
 const App = ({ access, onLogout: onClick }) => {
   return (
     <Router history={history}>
       <div className="my-app">
         <Navbar access={access} onClick={onClick} />
-        {/* <CreateTestPage /> */}
-        <Switch>
+        <QuestionPage />
+        {/* <Switch>
           <Route path="/login" component={LoginPage} />
           <Route path="/registration" component={RegistrationPage} />
           <PrivateRoute path="/profile" access={access} component={ProfilePage} />
           <PrivateRoute path="/tests" access={access} component={TestPage} />
           <PrivateRoute path={`/${CREATE_TEST}`} access={access} component={CreateTestPage} />
+          <PrivateRoute path={`/${QUESTION_PAGE}`} access={access} component={QuestionPage} />
           <Redirect to="/login" />
-        </Switch>
+        </Switch> */}
       </div>
     </Router>
   );

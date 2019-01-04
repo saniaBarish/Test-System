@@ -1,0 +1,13 @@
+.question-page{
+  margin-top: 90px;
+}
+
+.question-page .questions-list{
+  float: left;
+  width: 600px;
+  border: 2px solid skyblue;
+  padding: 40px;
+  border-radius: 20px;
+  background-color: whitesmoke;
+  margin-left: 60px;
+}

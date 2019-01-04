@@ -12,6 +12,7 @@ export const user = 'user';
 export const authorization = 'authorization';
 export const CREATE_TEST = 'create_test';
 export const tests = 'tests';
+export const QUESTION_PAGE = 'questions';
 
 
 export const validators = [
