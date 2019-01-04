@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import './QuestionSelect.css';
 
-import Button from '../../components/Button';
-import ItemList from '../../components/ItemList';
+import Button from '../Button';
+import ItemList from '../ItemList';
 
 const QuestionSelect = ({ questions, testName }) => {
   return (

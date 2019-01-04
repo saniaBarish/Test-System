@@ -21,8 +21,9 @@ export default handleActions({
 },
 {
   id: '',
-  value: '',
+  name: '',
   type: 'one',
+  questions: [],
   answers: [],
 });
 

@@ -1,0 +1,9 @@
+.questions-list{
+  width: 600px;
+  border: 2px solid skyblue;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: whitesmoke;
+  margin-left: 60px;
+  text-align: center;
+}

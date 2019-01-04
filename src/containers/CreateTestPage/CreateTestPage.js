@@ -6,8 +6,8 @@ import './CreateTestPage.css';
 
 import { testValueSelector, addQuestion, questionsSelector } from '../../reducers/testReducer';
 
-import QuestionSelect from '../QuestionSelect';
-import TestInfo from '../TetsInfo';
+import QuestionSelect from '../../components/QuestionSelect';
+import TestInfo from '../../components/TetsInfo';
 
 class CreateTestPage extends Component {
   static defaultProps = {
