@@ -1,0 +1,18 @@
+.test-info{
+  border: 2px solid skyblue;
+  padding: 30px;
+  margin: 0 30px 10px 30px;
+  border-radius: 20px;
+  background-color: whitesmoke;
+  text-align: center;
+  width: 800px;
+}
+
+.test-info .list-group{
+  width: 500px;
+}
+
+.test-info .btn-group .button{
+  margin: 5px;
+  width: 200px;
+}
