@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import './Navbar.css';
 
@@ -24,10 +24,12 @@ const Navbar = ({ access, onClick }) => {
 
 Navbar.defaultProps = {
   access: false,
+  onClick: () => {},
 };
 
 Navbar.propTypes = {
   access: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 export default Navbar;

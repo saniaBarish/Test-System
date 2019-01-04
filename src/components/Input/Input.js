@@ -4,30 +4,28 @@ import PropTypes from 'prop-types';
 import './Input.css';
 
 const Input = ({ type, id, className, placeholder,
-  onChange, onBlur, errorMessage, onFocus, label, name,
-  checked, value,
+  onChange, onBlur, errorMessage, onFocus, onKeyDown,
+  label, name, refInput,
 }) => {
   const alert = errorMessage ? <span>{errorMessage}</span> : null;
   const redBorder = errorMessage ? 'invalid' : '';
   return (
-    <div>
-      <label htmlFor={id}>
-        <label htmlFor={id}>{label}</label>
-        <input
-          type={type}
-          id={id}
-          name={name}
-          className={`${className} ${redBorder}`}
-          placeholder={placeholder}
-          onChange={onChange}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          defaultChecked={checked}
-          value={value}
-        />
-        {alert}
-      </label>
-    </div>
+    <label htmlFor={id} className="custom-input">
+      <label htmlFor={id}>{label}</label>
+      <input
+        type={type}
+        id={id}
+        name={name}
+        className={`${className} ${redBorder}`}
+        placeholder={placeholder}
+        onChange={onChange}
+        onBlur={onBlur}
+        onFocus={onFocus}
+        ref={refInput}
+        onKeyDown={onKeyDown}
+      />
+      {alert}
+    </label>
   );
 };
 
@@ -38,11 +36,11 @@ Input.defaultProps = {
   placeholder: '',
   label: '',
   name: '',
-  value: undefined,
-  checked: false,
   onChange: () => {},
   onBlur: () => {},
   onFocus: () => {},
+  refInput: () => {},
+  onKeyDown: () => {},
   errorMessage: '',
 };
 
@@ -57,11 +55,8 @@ Input.propTypes = {
   errorMessage: PropTypes.string,
   label: PropTypes.string,
   name: PropTypes.string,
-  value: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.string,
-  ]),
-  checked: PropTypes.bool,
+  refInput: PropTypes.func,
+  onKeyDown: PropTypes.func,
 };
 
 export default Input;

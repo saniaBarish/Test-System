@@ -1,0 +1,37 @@
+.modal {
+  background-color: rgba(66, 65, 65, 0.6);
+}
+
+.modal-delete .bd-example.bd-example-modal .modal{
+  display: block;
+}
+
+.modal-dialog {
+  margin: 100px auto; 
+}
+
+.modal-dialog .modal-body{
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.close span{
+  font-size: 15px;
+  font-weight: 600;
+  color: grey;
+}
+
+.close:hover span{
+  color: black;
+  font-weight: 900;
+}
+
+.close:focus{
+  outline: none;
+}
+
+.modal-footer .button{
+  float: right;
+  width: min-content;
+  margin: 0 10px 0 0;
+}

@@ -1,0 +1,7 @@
+.status-button {
+  width: 50px;
+}
+
+.status-button button:focus{
+  box-shadow: unset;
+}

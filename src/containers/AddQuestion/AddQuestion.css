@@ -1,0 +1,33 @@
+.add-question .test-system-lists{
+  float: unset;
+  margin: 10px 60px;
+  width: unset;
+}
+
+.add-question .custom-input{
+  width: 90%;
+}
+
+.add-question .btn-group{
+  margin-bottom: 30px;
+}
+
+.add-question .btn-group .button{
+  margin: 0 75px;
+}
+
+.add-question .checkbox-input{
+  margin-top: 10px;
+}
+
+.create-question-checkbox .checkbox-input .checkbox-label{
+  color: #28a745;
+  border: 1px solid #28a745;
+  padding: 5px;
+  border-radius: 7px;
+}
+
+.create-question-checkbox .checkbox-input .checkbox-label:hover{
+  color: white;
+  background-color: #28a745;
+}

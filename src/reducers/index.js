@@ -4,7 +4,6 @@ import registrationReducer from './registrationReducer';
 import profileReducer from './profileReducer';
 import loadingReducer from './loadingReducer';
 import questionReducer from './questionReducer';
-import answerReducer from './answerReducer';
 import testReducer from './testReducer';
 
 export default combineReducers({
@@ -12,7 +11,6 @@ export default combineReducers({
   registrationReducer,
   profileReducer,
   loadingReducer,
-  answerReducer,
   questionReducer,
   testReducer,
 });

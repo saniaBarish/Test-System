@@ -1,0 +1,16 @@
+.questions-select{
+  border: 2px solid skyblue;
+  float: left;
+  padding: 30px;
+  margin: 0 30px 10px 30px;
+  border-radius: 20px;
+  background-color: whitesmoke;
+}
+
+.questions-select .btn-create-question{
+  width: 600px;
+}
+
+.questions-select .questions{
+  width: 600px;
+}
