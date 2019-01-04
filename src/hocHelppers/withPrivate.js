@@ -20,10 +20,6 @@ const withPrivat = (View) => {
       }
     }
 
-    onLogout = () => {
-      this.props.onLogout();
-    }
-
     render() {
       return (
         <React.Fragment>

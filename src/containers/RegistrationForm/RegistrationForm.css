@@ -1,3 +1,8 @@
 .form-group{
   position: static;
 }
+
+.form-group .button{
+  margin: auto;
+  width: 40%;
+}

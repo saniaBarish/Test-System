@@ -1,0 +1,9 @@
+.close-question .close-question-btn{
+  float: right;
+}
+
+.close-question .close-question-name{
+  margin-top: 3px;
+  text-align: left;
+  min-height: 40px;
+}

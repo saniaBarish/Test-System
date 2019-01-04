@@ -1,0 +1,46 @@
+.open-answer .btn-answer{
+  float: right;
+}
+
+.open-answer .element-name{
+  text-align: left;
+  min-height: 40px;
+}
+
+.open-answer .element-name:hover{
+  cursor: pointer;
+}
+
+.open-answer .btn-answer .status-button{
+  float: right;
+  margin-right: 10px;
+}
+
+.open-answer .btn-answer .TrashButton{
+  float: right;
+  margin-right: 5px;
+}
+
+.open-answer .btn-answer .TrashButton button{
+  background-color: white;
+}
+
+.open-answer .btn-answer .TrashButton button:hover{
+  background-color: #dc3545;
+}
+
+.open-answer .checkbox-label{
+  float: left;
+  margin-right: 4px;
+}
+
+
+
+
+
+.edit-input .text-area{
+  overflow: scroll;
+  resize: horizontal;
+  display: block;
+  width: 70%;
+}

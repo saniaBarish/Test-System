@@ -1,5 +1,5 @@
 import validator from 'validator';
-import { email, password, firstName, lastName, userName, confirmPassword } from './constants';
+import { email, password, firstName, lastName, userName, confirmPassword, ANSWER, QUESTION } from './constants';
 
 const emailValid = (value) => {
   if (validator.isEmpty(value)) {
@@ -48,6 +48,19 @@ const confirmPasswordValid = ({ value, password: value2 }) => {
   return '';
 };
 
+const answerValid = (answers) => {
+  if (answers.length === 0) {
+    return 'The question must have at least one correct and incorrect answer.';
+  }
+  const right = answers.some((answer) => answer.status) ? '' : 'No right answer.';
+  const wrong = answers.some((answer) => !answer.status) ? '' : 'No wrong answer.';
+  return right || wrong;
+};
+
+const questionValid = (value) => {
+  return validator.isEmpty(value) ? 'Please fill the field question' : '';
+};
+
 const validFunctions = {
   [email]: emailValid,
   [password]: passwordValid,
@@ -55,6 +68,8 @@ const validFunctions = {
   [lastName]: firstNameValid,
   [userName]: userNameValid,
   [confirmPassword]: confirmPasswordValid,
+  [ANSWER]: answerValid,
+  [QUESTION]: questionValid,
 };
 
 

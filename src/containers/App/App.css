@@ -1,8 +1,19 @@
 .my-app{
-  background-color: slategray;
+  background-color: lightslategrey;
+  position: relative;
+  background-repeat: repeat-x;
   margin: 0;
-  padding: 0;
-  height: 1000px;
-  max-height: 1000px;
+  padding-bottom: 10%;
   overflow: scroll;
+}
+
+.navbar.navbar-expand-md.navbar-dark.bg-dark.fixed-top{
+  position: absolute;
+  top: 0px;
+  height: 60px;
+  color: whitesmoke;
+}
+
+.list-group-item.list-group-item-action{
+  user-select: none;
 }

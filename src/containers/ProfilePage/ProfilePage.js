@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import './ProfilePage.css';
 
@@ -16,6 +17,10 @@ const ProfilePage = ({ user }) => {
       </div>
     </div>
   );
+};
+
+ProfilePage.propTypes = {
+  user: PropTypes.objectOf(PropTypes.string).isRequired,
 };
 
 export default connect(

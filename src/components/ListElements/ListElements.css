@@ -1,0 +1,9 @@
+.elements .list-group-item.list-group-item-action{
+  border-radius: 10px;
+  margin-bottom: 1px;
+}
+
+.elements .button {
+  margin: 0 auto;
+  margin-top: 5px;
+}

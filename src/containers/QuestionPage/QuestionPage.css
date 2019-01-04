@@ -1,0 +1,19 @@
+.question-page{
+  margin: 90px auto;
+  padding-bottom: 35%;
+}
+
+.question-page .test-system-lists{
+  float: left;
+  margin-right: 50px;
+  width: 40%;
+}
+
+.question-page .add-question{
+  float: left;
+  border: 2px solid skyblue;
+  border-radius: 20px;
+  background-color: whitesmoke;
+  text-align: center;
+  width: 50%;
+}

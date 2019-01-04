@@ -15,8 +15,8 @@ const ItemList = ({ elements, className, label, message }) => {
   });
   const haveMessage = message ? <li className={className} key={message}>{message}</li> : null;
   return (
-    <div>
-      <h2 className="item-list-header">{label}</h2>
+    <div className="item-list">
+      <h2 className="header">{label}</h2>
       <ul className="list-group">
         {list.length === 0 ? haveMessage : list}
       </ul>

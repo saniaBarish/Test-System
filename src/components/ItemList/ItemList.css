@@ -1,4 +1,13 @@
-.item-list-header{
+.item-list{
+  margin: auto;
+}
+
+.item-list .header{
   margin: auto;
   text-align: center;
+}
+
+.item-list .list-group{
+  text-align: center;
+  margin: auto;
 }
