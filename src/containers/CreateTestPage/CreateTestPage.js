@@ -7,31 +7,29 @@ import './CreateTestPage.css';
 import { testValueSelector, addQuestion, questionsSelector } from '../../reducers/testReducer';
 
 import QuestionSelect from '../QuestionSelect';
+import TestInfo from '../TetsInfo';
 
 class CreateTestPage extends Component {
+  static defaultProps = {
+    testName: 'new Test',
+    questions: [],
+  };
+
+  static propTypes = {
+    testName: PropTypes.string,
+    questions: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object, PropTypes.string])),
+  };
+
   render() {
     const { testName, questions } = this.props;
     return (
       <div className="create-test-page">
-        <div className="create-test-page-header">
-          <h2>{testName}</h2>
-        </div>
         <QuestionSelect testName={testName} questions={questions} />
+        <TestInfo testName={testName} />
       </div>
     );
   }
 }
-/// test pull request
-
-CreateTestPage.defaultProps = {
-  testName: '',
-  questions: [],
-};
-
-CreateTestPage.propTypes = {
-  testName: PropTypes.string,
-  questions: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object, PropTypes.string])),
-};
 
 export default connect(
   (state) => ({

@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { push } from 'react-router-redux';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import './TestsPage.css';
 
@@ -15,28 +16,38 @@ import Button from '../../components/Button';
 import Input from '../../components/Input';
 import ItemList from '../../components/ItemList';
 
-class TestsPage extends Component {
-  onClickCreateTest = () => {
-    this.props.createTest();
-    this.props.dispatch(push(`/${CREATE_TEST}`));
-  }
+const TestsPage = ({ createTest: onCreateTest, updateTestValue: onUpdateTestValue, dispatch }) => {
+  const onClickCreateTest = () => {
+    onCreateTest();
+    dispatch(push(`/${CREATE_TEST}`));
+  };
 
-  onChangeTestNameInput = ({ target: { value } }) => {
-    this.props.updateTestValue({ value });
-  }
+  const onChangeTestNameInput = ({ target: { value } }) => {
+    onUpdateTestValue({ value });
+  };
 
-  render() {
-    return (
-      <div className="test-page">
-        <div className="test-page-tests">
-          <ItemList />
-        </div>
-        <Input label="Test Name" onChange={this.onChangeTestNameInput} />
-        <Button value="Create Test" onClick={this.onClickCreateTest} />
+  return (
+    <div className="test-page">
+      <div className="test-page-tests">
+        <ItemList />
       </div>
-    );
-  }
-}
+      <Input label="Test Name" onChange={onChangeTestNameInput} />
+      <Button value="Create Test" onClick={onClickCreateTest} />
+    </div>
+  );
+};
+
+TestsPage.defaultProps = {
+  createTest: () => {},
+  updateTestValue: () => {},
+  dispatch: () => {},
+};
+
+TestsPage.propTypes = {
+  createTest: PropTypes.func,
+  updateTestValue: PropTypes.func,
+  dispatch: PropTypes.func,
+};
 
 export default connect(
   (state) => ({

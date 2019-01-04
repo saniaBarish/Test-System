@@ -2,29 +2,13 @@
   margin: 0;
   padding-top: 100px;
 }
-
-.create-test-page-header{
-  margin: 0 0 0 60px;
-}
-
 .radio-input{
   float: left;
   margin-left: 5px;
 }
 
-.questions-select{
-  border: 2px solid skyblue;
+.create-test-page .test-info{
   float: left;
-  padding: 30px;
-  margin: 0 30px 10px 30px;
-  border-radius: 20px;
-  background-color: whitesmoke;
-}
-
-.btn-create-question{
-  width: 600px;
-}
-
-.questions{
-  width: 600px;
+  width: 900px;
+  margin-left: 150px;
 }
