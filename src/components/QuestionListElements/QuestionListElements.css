@@ -1,0 +1,14 @@
+.elements .list-group-item.list-group-item-action{
+  height: 60px;
+  border-radius: 10px;
+  margin-bottom: 1px;
+}
+
+.element-body .element-name{
+  float: left;
+  padding: 5px;
+}
+
+.element-body .btn.btn-outline-danger.btn-sm.float-right{
+  margin: 3px 10px 0 0;
+}

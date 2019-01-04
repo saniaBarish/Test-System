@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import './TestInfo.css';
 
-import ItemList from '../../components/ItemList';
-import Button from '../../components/Button';
+import ItemList from '../ItemList';
+import Button from '../Button';
 
 const TestInfo = ({ questions, testName }) => {
   return (
