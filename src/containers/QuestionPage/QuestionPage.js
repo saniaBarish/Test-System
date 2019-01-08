@@ -9,6 +9,8 @@ import {
   answersSelector,
   addAnswer,
   addQuestion,
+  deleteAnswer,
+  deleteQuestion,
 } from '../../reducers/questionReducer';
 
 import TestItemList from '../../components/TestItemList';
@@ -20,6 +22,8 @@ class QuestionPage extends Component {
     answers: [],
     addAnswer: () => {},
     addQuestion: () => {},
+    deleteAnswer: () => {},
+    deleteQuestion: () => {},
   }
 
   static propTypes = {
@@ -27,6 +31,8 @@ class QuestionPage extends Component {
     answers: PropTypes.arrayOf(PropTypes.object),
     addAnswer: PropTypes.func,
     addQuestion: PropTypes.func,
+    deleteAnswer: PropTypes.func,
+    deleteQuestion: PropTypes.func,
   }
 
   onClickAddAnswer = () => {
@@ -46,7 +52,12 @@ class QuestionPage extends Component {
   render() {
     return (
       <div className="question-page">
-        <TestItemList elements={this.props.questions} listName="Question" type="QuestionList" />
+        <TestItemList
+          elements={this.props.questions}
+          listName="Question"
+          type="QuestionList"
+          onDelete={this.props.deleteQuestion}
+        />
         <AddQuestion
           answers={this.props.answers}
           questionInput={(el) => { this.questionInput = el; }}
@@ -54,6 +65,7 @@ class QuestionPage extends Component {
           checkBox={(el) => { this.checkBox = el; }}
           onClickAddAnswer={this.onClickAddAnswer}
           onClickSaveQuestion={this.onClickSaveQuestion}
+          deleteAnswer={this.props.deleteAnswer}
         />
       </div>
     );
@@ -68,5 +80,7 @@ export default connect(
   {
     addQuestion,
     addAnswer,
+    deleteAnswer,
+    deleteQuestion,
   },
 )(QuestionPage);

@@ -6,11 +6,17 @@ import './TestItemList.css';
 import TestItemListElements from './TestItemListElements';
 import Button from '../Button';
 
-const TestItemList = ({ elements, listName, message, type }) => {
+const TestItemList = ({ elements, listName, message, type, onDelete }) => {
   return (
     <div className="questions-list">
       <h2>{`${listName} List`}</h2>
-      <TestItemListElements elements={elements} listName={listName} message={message} type={type} />
+      <TestItemListElements
+        elements={elements}
+        listName={listName}
+        message={message}
+        type={type}
+        onDelete={onDelete}
+      />
       <Button className="btn btn-outline-danger" value="Clear List" />
     </div>
   );
@@ -21,6 +27,7 @@ TestItemList.defaultProps = {
   message: 'List is empty.',
   listName: '',
   type: '',
+  onDelete: () => {},
 };
 
 TestItemList.propTypes = {
@@ -28,6 +35,7 @@ TestItemList.propTypes = {
   message: PropTypes.string,
   listName: PropTypes.string,
   type: PropTypes.string,
+  onDelete: PropTypes.func,
 };
 
 export default TestItemList;

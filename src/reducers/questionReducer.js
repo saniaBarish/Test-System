@@ -4,6 +4,8 @@ import { get, uniqueId } from 'lodash';
 
 export const addQuestion = createAction('ADD_QUESTION');
 export const addAnswer = createAction('ADD_ANSWER');
+export const deleteAnswer = createAction('DELETE_ANSWER');
+export const deleteQuestion = createAction('DELETE_QUESTION');
 
 export default handleActions({
   [addQuestion]: ({ questions, answers }, { payload: { name } }) => ({
@@ -21,6 +23,14 @@ export default handleActions({
       name,
       status,
     }],
+  }),
+  [deleteAnswer]: ({ questions, answers }, { payload: { id } }) => ({
+    questions,
+    answers: answers.filter((answer) => answer.id !== id),
+  }),
+  [deleteQuestion]: ({ questions, answers }, { payload: { id } }) => ({
+    answers,
+    questions: questions.filter((question) => question.id !== id),
   }),
 },
 {
