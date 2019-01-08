@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './QuestionListElements.css';
+import './TestItemListElements.css';
 
-const QuestionListElements = ({ elements, className }) => {
+const TestItemListElements = ({ elements, listName, className }) => {
   const list = elements.map((element) => {
     return (
-      <div key={element.id} className={className}>
+      <div key={element.name} className={className}>
         <div className="element-body">
           <div className="element-name">{element.name}</div>
           <button
@@ -15,6 +15,7 @@ const QuestionListElements = ({ elements, className }) => {
           >
             <i className="fa fa-trash-o" />
           </button>
+          <input id={`${listName}${element.id}`} className="custom-checkbox" type="checkbox" />
         </div>
       </div>
     );
@@ -26,17 +27,21 @@ const QuestionListElements = ({ elements, className }) => {
   );
 };
 
-QuestionListElements.defaultProps = {
+TestItemListElements.defaultProps = {
+  listName: '',
   elements: [
-    { id: '1', name: 'No questions created.' },
-    { id: '2', name: 'Add your first question.' },
+    {
+      id: '1',
+      name: 'List is empty',
+    },
   ],
   className: 'list-group-item list-group-item-action',
 };
 
-QuestionListElements.propTypes = {
+TestItemListElements.propTypes = {
+  listName: PropTypes.string,
   elements: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
   className: PropTypes.string,
 };
 
-export default QuestionListElements;
+export default TestItemListElements;

@@ -10,24 +10,22 @@ const Input = ({ type, id, className, placeholder,
   const alert = errorMessage ? <span>{errorMessage}</span> : null;
   const redBorder = errorMessage ? 'invalid' : '';
   return (
-    <div>
-      <label htmlFor={id}>
-        <label htmlFor={id}>{label}</label>
-        <input
-          type={type}
-          id={id}
-          name={name}
-          className={`${className} ${redBorder}`}
-          placeholder={placeholder}
-          onChange={onChange}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          defaultChecked={checked}
-          value={value}
-        />
-        {alert}
-      </label>
-    </div>
+    <label htmlFor={id} className="custom-input">
+      <label htmlFor={id}>{label}</label>
+      <input
+        type={type}
+        id={id}
+        name={name}
+        className={`${className} ${redBorder}`}
+        placeholder={placeholder}
+        onChange={onChange}
+        onBlur={onBlur}
+        onFocus={onFocus}
+        defaultChecked={checked}
+        value={value}
+      />
+      {alert}
+    </label>
   );
 };
 
