@@ -3,26 +3,28 @@ import PropTypes from 'prop-types';
 
 import './TestItemList.css';
 
-import QuestionListElements from './TestItemListElements';
+import TestItemListElements from './TestItemListElements';
 import Button from '../Button';
 
-const TestItemList = ({ questions, listName }) => {
+const TestItemList = ({ elements, listName, message, type }) => {
   return (
     <div className="questions-list">
       <h2>{`${listName} List`}</h2>
-      <QuestionListElements elements={questions} listName={listName} />
+      <TestItemListElements elements={elements} listName={listName} message={message} type={type} />
       <Button className="btn btn-outline-danger" value="Clear List" />
     </div>
   );
 };
 
 TestItemList.defaultProps = {
-  questions: undefined,
+  elements: [],
+  message: 'List is empty.',
   listName: '',
 };
 
 TestItemList.propTypes = {
-  questions: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
+  elements: PropTypes.arrayOf(PropTypes.object),
+  message: PropTypes.string,
   listName: PropTypes.string,
 };
 

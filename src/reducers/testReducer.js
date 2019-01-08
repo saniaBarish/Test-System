@@ -4,7 +4,7 @@ import { get, uniqueId } from 'lodash';
 
 export const createTest = createAction('CREATE_TEST');
 export const updateTestValue = createAction('UPDATE_TEST_VALUE');
-export const addQuestion = createAction('ADD_QUESTION');
+export const addQuestion = createAction('ADD_QUESTION_IN_TEST');
 
 export default handleActions(
   {
