@@ -20,12 +20,14 @@ TestItemList.defaultProps = {
   elements: [],
   message: 'List is empty.',
   listName: '',
+  type: '',
 };
 
 TestItemList.propTypes = {
   elements: PropTypes.arrayOf(PropTypes.object),
   message: PropTypes.string,
   listName: PropTypes.string,
+  type: PropTypes.string,
 };
 
 export default TestItemList;
