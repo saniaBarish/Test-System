@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import './Input.css';
 
 const Input = ({ type, id, className, placeholder,
-  onChange, onBlur, errorMessage, onFocus, label, name,
-  checked, value,
+  onChange, onBlur, errorMessage, onFocus,
+  label, name, refInput
 }) => {
   const alert = errorMessage ? <span>{errorMessage}</span> : null;
   const redBorder = errorMessage ? 'invalid' : '';
@@ -21,8 +21,7 @@ const Input = ({ type, id, className, placeholder,
         onChange={onChange}
         onBlur={onBlur}
         onFocus={onFocus}
-        defaultChecked={checked}
-        value={value}
+        ref={refInput}
       />
       {alert}
     </label>
@@ -36,11 +35,10 @@ Input.defaultProps = {
   placeholder: '',
   label: '',
   name: '',
-  value: undefined,
-  checked: false,
   onChange: () => {},
   onBlur: () => {},
   onFocus: () => {},
+  refInput: () => {},
   errorMessage: '',
 };
 
@@ -55,11 +53,7 @@ Input.propTypes = {
   errorMessage: PropTypes.string,
   label: PropTypes.string,
   name: PropTypes.string,
-  value: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.string,
-  ]),
-  checked: PropTypes.bool,
+  refInput: PropTypes.func,
 };
 
 export default Input;

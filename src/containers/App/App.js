@@ -27,7 +27,8 @@ const App = ({ access, onLogout: onClick }) => {
     <Router history={history}>
       <div className="my-app">
         <Navbar access={access} onClick={onClick} />
-        <Switch>
+        <QuestionPage />
+        {/* <Switch>
           <Route path="/login" component={LoginPage} />
           <Route path="/registration" component={RegistrationPage} />
           <PrivateRoute path="/profile" access={access} component={ProfilePage} />
@@ -35,7 +36,7 @@ const App = ({ access, onLogout: onClick }) => {
           <PrivateRoute path={`/${CREATE_TEST}`} access={access} component={CreateTestPage} />
           <PrivateRoute path={`/${QUESTION_PAGE}`} access={access} component={QuestionPage} />
           <Redirect to="/login" />
-        </Switch>
+        </Switch> */}
       </div>
     </Router>
   );

@@ -14,6 +14,18 @@
   padding: 5px;
 }
 
+.element-body .element-name.wrong{
+  float: left;
+  padding: 5px;
+  color: red;
+}
+
+.element-body .element-name.current{
+  float: left;
+  padding: 5px;
+  color: green;
+}
+
 .element-body .btn.btn-outline-danger.btn-sm.float-right{
   margin: 3px 10px 0 0;
 }
