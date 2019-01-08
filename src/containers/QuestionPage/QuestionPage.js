@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 
 import './QuestionPage.css';
 
-import QuestionList from '../../components/QuestionList';
+import TestItemList from '../../components/TestItemList';
+import AddQuestion from '../AddQuestion';
 
 const QuestionPage = ({ questions }) => {
   return (
     <div className="question-page">
-      <QuestionList questions={questions} />
+      <TestItemList questions={questions} listName="Question" />
+      <AddQuestion />
     </div>
   );
 };

@@ -4,6 +4,11 @@
   margin-bottom: 1px;
 }
 
+.element-body{
+  display: block;
+  height: 10px;
+}
+
 .element-body .element-name{
   float: left;
   padding: 5px;
@@ -11,4 +16,9 @@
 
 .element-body .btn.btn-outline-danger.btn-sm.float-right{
   margin: 3px 10px 0 0;
+}
+
+.element-body .custom-checkbox{
+  float: right;
+  margin: 10px 10px 0 0;
 }

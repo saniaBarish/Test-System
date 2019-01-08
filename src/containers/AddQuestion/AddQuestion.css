@@ -1,0 +1,13 @@
+.add-question .questions-list{
+  float: unset;
+  margin: 20px;
+  width: unset;
+}
+
+.add-question .custom-input{
+  width: 80%;
+}
+
+.add-question .button{
+  width: max-content;
+}
