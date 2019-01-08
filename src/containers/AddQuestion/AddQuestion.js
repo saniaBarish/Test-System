@@ -9,7 +9,7 @@ import TestItemList from '../../components/TestItemList';
 import CheckBox from '../../components/CheckBox';
 
 const AddQuestion = ({ answers, questionInput, answerInput, checkBox,
-  onClickAddAnswer, onClickSaveQuestion,
+  onClickAddAnswer, onClickSaveQuestion, deleteAnswer,
 }) => {
   return (
     <div className="add-question">
@@ -19,6 +19,7 @@ const AddQuestion = ({ answers, questionInput, answerInput, checkBox,
         listName="Answer"
         elements={answers}
         message="No answers added..."
+        onDelete={deleteAnswer}
       />
       <Input placeholder="Enter answer" refInput={answerInput} />
       <CheckBox label="current answer" refCheckBox={checkBox} />
@@ -37,6 +38,7 @@ AddQuestion.defaultProps = {
   checkBox: () => {},
   onClickAddAnswer: () => {},
   onClickSaveQuestion: () => {},
+  deleteAnswer: () => {},
 };
 
 AddQuestion.propTypes = {
@@ -46,6 +48,7 @@ AddQuestion.propTypes = {
   checkBox: PropTypes.func,
   onClickAddAnswer: PropTypes.func,
   onClickSaveQuestion: PropTypes.func,
+  deleteAnswer: PropTypes.func,
 };
 
 export default AddQuestion;

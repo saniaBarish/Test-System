@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './TestItemListElements.css';
 
-const TestItemListElements = ({ elements, listName, className, message, type }) => {
+const TestItemListElements = ({ elements, listName, className, message, type, onDelete }) => {
   const list = elements.map((element) => {
     const oneOf = element.status ? 'current' : 'wrong';
     const color = type ? '' : oneOf;
@@ -14,6 +14,7 @@ const TestItemListElements = ({ elements, listName, className, message, type }) 
           <button
             type="button"
             className="btn btn-outline-danger btn-sm float-right"
+            onClick={() => onDelete({ id: element.id })}
           >
             <i className="fa fa-trash-o" />
           </button>
@@ -48,6 +49,7 @@ TestItemListElements.defaultProps = {
   elements: [],
   message: 'List is empty.',
   className: 'list-group-item list-group-item-action',
+  onDelete: () => {},
 };
 
 TestItemListElements.propTypes = {
@@ -56,6 +58,7 @@ TestItemListElements.propTypes = {
   elements: PropTypes.arrayOf(PropTypes.object),
   message: PropTypes.string,
   className: PropTypes.string,
+  onDelete: PropTypes.func,
 };
 
 export default TestItemListElements;
