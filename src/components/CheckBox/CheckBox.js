@@ -18,11 +18,13 @@ const CheckBox = ({ id, label, refCheckBox }) => {
 CheckBox.defaultProps = {
   id: uniqueId('checkbox_'),
   label: '',
+  refCheckBox: () => {},
 };
 
 CheckBox.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
+  refCheckBox: PropTypes.func,
 };
 
 export default CheckBox;

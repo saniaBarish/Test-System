@@ -5,7 +5,7 @@ import './Input.css';
 
 const Input = ({ type, id, className, placeholder,
   onChange, onBlur, errorMessage, onFocus,
-  label, name, refInput
+  label, name, refInput,
 }) => {
   const alert = errorMessage ? <span>{errorMessage}</span> : null;
   const redBorder = errorMessage ? 'invalid' : '';
