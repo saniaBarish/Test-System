@@ -6,6 +6,9 @@ export const addQuestion = createAction('ADD_QUESTION');
 export const addAnswer = createAction('ADD_ANSWER');
 export const deleteAnswer = createAction('DELETE_ANSWER');
 export const deleteQuestion = createAction('DELETE_QUESTION');
+export const changeQuestionChecked = createAction('CHANGE_QUASTION_CHACKED');
+export const changeAnswerChecked = createAction('CHANGE_ANSWER_CHACKED');
+export const changeAnswerStatus = createAction('CHANGE_ANSWER_STATUS');
 
 export default handleActions({
   [addQuestion]: ({ questions, answers }, { payload: { name } }) => ({
@@ -13,6 +16,7 @@ export default handleActions({
       id: uniqueId('question_'),
       name,
       answers: [...answers],
+      checked: false,
     }],
     answers: [],
   }),
@@ -22,6 +26,7 @@ export default handleActions({
       id: uniqueId('answer_'),
       name,
       status,
+      checked: false,
     }],
   }),
   [deleteAnswer]: ({ questions, answers }, { payload: { id } }) => ({
@@ -31,6 +36,24 @@ export default handleActions({
   [deleteQuestion]: ({ questions, answers }, { payload: { id } }) => ({
     answers,
     questions: questions.filter((question) => question.id !== id),
+  }),
+  [changeAnswerChecked]: ({ questions, answers }, { payload: { id, checked } }) => ({
+    questions,
+    answers: answers.map((answer) => {
+      if (answer.id === id) {
+        return ({ ...answer, checked });
+      }
+      return answer;
+    }),
+  }),
+  [changeAnswerStatus]: ({ questions, answers }, { payload: { id, status } }) => ({
+    questions,
+    answers: answers.map((answer) => {
+      if (answer.id === id) {
+        return ({ ...answer, status });
+      }
+      return answer;
+    }),
   }),
 },
 {

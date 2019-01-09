@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import './RegistrationPage.css';
 
@@ -18,6 +19,14 @@ const RegistrationPage = ({ loading }) => {
       </div>
     </div>
   );
+};
+
+RegistrationPage.defaultProps = {
+  loading: false,
+};
+
+RegistrationPage.propTypes = {
+  loading: PropTypes.bool,
 };
 
 export default connect(

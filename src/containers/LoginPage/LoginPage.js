@@ -12,7 +12,7 @@ import {
   onUpdate,
   onLoginError,
 } from '../../reducers/loginReducer';
-import { loadingSelector, onLoading, offLoading } from '../../reducers/loadingReducer';
+import { loadingSelector, onLoading } from '../../reducers/loadingReducer';
 import { email, password } from '../../helppers/constants';
 import verifyValidation from '../../helppers/verifyValidation';
 import { onLoginAsync } from '../../actions';
@@ -20,21 +20,28 @@ import Navbar from '../Navbar';
 import Login from '../../components/Login';
 import Spinner from '../../components/Spinner';
 
+const mapStateToProps = (state) => ({
+  email: emailSelector(state),
+  password: passwordSelector(state),
+  err: errSelector(state),
+  loading: loadingSelector(state),
+});
+
 class LoginPage extends Component {
   static defaultProps = {
-    onUpdate: () => {},
     email: '',
     password: '',
-    onLoginAsync: () => {},
-    onLoginError: () => {},
+    loading: false,
   }
 
   static propTypes = {
-    onUpdate: PropTypes.func,
+    onUpdate: PropTypes.func.isRequired,
     email: PropTypes.string,
     password: PropTypes.string,
-    onLoginAsync: PropTypes.func,
-    onLoginError: PropTypes.func,
+    onLoginAsync: PropTypes.func.isRequired,
+    onLoginError: PropTypes.func.isRequired,
+    onLoading: PropTypes.func.isRequired,
+    loading: PropTypes.bool,
   }
 
   state={
@@ -96,19 +103,11 @@ class LoginPage extends Component {
 }
 
 export default withRouter(connect(
-  (state) => {
-    return ({
-      email: emailSelector(state),
-      password: passwordSelector(state),
-      err: errSelector(state),
-      loading: loadingSelector(state),
-    });
-  },
+  mapStateToProps,
   {
     onUpdate,
     onLoginAsync,
     onLoginError,
     onLoading,
-    offLoading,
   },
 )(LoginPage));

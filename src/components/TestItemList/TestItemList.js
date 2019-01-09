@@ -3,39 +3,40 @@ import PropTypes from 'prop-types';
 
 import './TestItemList.css';
 
-import TestItemListElements from './TestItemListElements';
+import QuestionListElements from './QuestionListElements';
+import AnswerListElements from './AnswerListElements';
 import Button from '../Button';
 
-const TestItemList = ({ elements, listName, message, type, onDelete }) => {
+const list = (type) => {
+  if (type === 'answers') {
+    return <AnswerListElements />;
+  }
+
+  if (type === 'questions') {
+    return <QuestionListElements />;
+  }
+
+  return null;
+};
+
+const QuestionList = ({ listName, type }) => {
   return (
-    <div className="questions-list">
-      <h2>{`${listName} List`}</h2>
-      <TestItemListElements
-        elements={elements}
-        listName={listName}
-        message={message}
-        type={type}
-        onDelete={onDelete}
-      />
+    <div className="test-item-list">
+      <h2>{listName}</h2>
+      {list(type)}
       <Button className="btn btn-outline-danger" value="Clear List" />
     </div>
   );
 };
 
-TestItemList.defaultProps = {
-  elements: [],
-  message: 'List is empty.',
-  listName: '',
-  type: '',
-  onDelete: () => {},
+QuestionList.defaultProps = {
+  listName: 'Question List',
+  type: 'questions',
 };
 
-TestItemList.propTypes = {
-  elements: PropTypes.arrayOf(PropTypes.object),
-  message: PropTypes.string,
+QuestionList.propTypes = {
   listName: PropTypes.string,
   type: PropTypes.string,
-  onDelete: PropTypes.func,
 };
 
-export default TestItemList;
+export default QuestionList;
