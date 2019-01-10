@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -6,47 +6,50 @@ import './QuestionPage.css';
 
 import {
   questionsSelector,
+  answersSelector,
   addAnswer,
   addQuestion,
-  deleteQuestion,
 } from '../../reducers/questionReducer';
 
-import TestItemList from '../../components/TestItemList';
+import TestSystemLists from '../../components/TestSystemLists';
 import AddQuestion from '../AddQuestion';
+import ListElements from '../../components/TestSystemLists/ListElements';
+import Question from '../../components/TestSystemLists/ListElements/Question';
 
-class QuestionPage extends Component {
-  static defaultProps = {
-    questions: [],
-  }
+const mapStateToProps = (state) => ({
+  questions: questionsSelector(state),
+  answers: answersSelector(state),
+});
 
-  static propTypes = {
-    questions: PropTypes.arrayOf(PropTypes.object),
-    deleteQuestion: PropTypes.func.isRequired,
-    addAnswer: PropTypes.func.isRequired,
-    addQuestion: PropTypes.func.isRequired,
-  }
+const mapDispatchToProps = (dispatch) => ({
+  actions: {
+    addAnswer: (payload) => dispatch(addAnswer(payload)),
+    addQuestion: (payload) => dispatch(addQuestion(payload)),
+  },
+});
 
-  render() {
-    return (
-      <div className="question-page">
-        <TestItemList
-          elements={this.props.questions}
-          onDelete={this.props.deleteQuestion}
-          message="No questions added..."
-        />
-        <AddQuestion addAnswer={this.props.addAnswer} addQuestion={this.props.addQuestion} />
-      </div>
-    );
-  }
-}
+const QuestionPage = ({ answers, questions, actions }) => {
+  return (
+    <div className="question-page">
+      <TestSystemLists>
+        <ListElements elements={questions} View={Question} />
+      </TestSystemLists>
+      <AddQuestion
+        answers={answers}
+        addAnswer={actions.addAnswer}
+        addQuestion={actions.addQuestion}
+      />
+    </div>
+  );
+};
+
+QuestionPage.propTypes = {
+  answers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  questions: PropTypes.arrayOf(PropTypes.object).isRequired,
+  actions: PropTypes.objectOf(PropTypes.func).isRequired,
+};
 
 export default connect(
-  (state) => ({
-    questions: questionsSelector(state),
-  }),
-  {
-    deleteQuestion,
-    addAnswer,
-    addQuestion,
-  },
+  mapStateToProps,
+  mapDispatchToProps,
 )(QuestionPage);

@@ -22,11 +22,20 @@ import TestPage from '../TestsPage';
 import CreateTestPage from '../CreateTestPage';
 import QuestionPage from '../QuestionPage';
 
-const App = ({ access, onLogout: onClick }) => {
+const mapStateToProps = (state) => ({
+  access: authorizationSelector(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({ actions: {
+  onLogout: () => dispatch(onLogout()),
+},
+});
+
+const App = ({ access, actions }) => {
   return (
     <Router history={history}>
       <div className="my-app">
-        <Navbar access={access} onClick={onClick} />
+        <Navbar access={access} onClick={actions.onLogout} />
         <Switch>
           <Route path="/login" component={LoginPage} />
           <Route path="/registration" component={RegistrationPage} />
@@ -43,19 +52,14 @@ const App = ({ access, onLogout: onClick }) => {
 
 App.defaultProps = {
   access: false,
-  onLogout: () => {},
 };
 
 App.propTypes = {
   access: PropTypes.bool,
-  onLogout: PropTypes.func,
+  actions: PropTypes.objectOf(PropTypes.func).isRequired,
 };
 
 export default connect(
-  (state) => ({
-    access: authorizationSelector(state),
-  }),
-  {
-    onLogout,
-  },
+  mapStateToProps,
+  mapDispatchToProps,
 )(App);
