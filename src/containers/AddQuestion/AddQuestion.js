@@ -6,17 +6,29 @@ import './AddQuestion.css';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import CheckBox from '../../components/CheckBox';
-import TestItemList from '../../components/TestItemList';
+import TestSystemLists from '../../components/TestSystemLists';
+import ListElements from '../../components/TestSystemLists/ListElements';
+import Answer from '../../components/TestSystemLists/ListElements/Answer';
 
 class AddQuestion extends Component {
   static defaultProps = {
-    addAnswer: () => {},
-    addQuestion: () => {},
+    answers: [{
+      id: 'answer_',
+      name: 'No answers added...',
+      status: false,
+      checked: false,
+    }],
   }
 
   static propTypes = {
-    addAnswer: PropTypes.func,
-    addQuestion: PropTypes.func,
+    addAnswer: PropTypes.func.isRequired,
+    addQuestion: PropTypes.func.isRequired,
+    answers: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      status: PropTypes.bool,
+      checked: PropTypes.bool,
+    })),
   }
 
   onClickAddAnswer = () => {
@@ -38,7 +50,9 @@ class AddQuestion extends Component {
       <div className="add-question">
         <h2>Create Question</h2>
         <Input placeholder="Enter question" refInput={(node) => { this.questionInput = node; }} />
-        <TestItemList type="answers" />
+        <TestSystemLists type="answers" listName="Answer List">
+          <ListElements elements={this.props.answers} View={Answer} />
+        </TestSystemLists>
         <Input placeholder="Enter answer" refInput={(node) => { this.answerInput = node; }} />
         <CheckBox label="current answer" refCheckBox={(node) => { this.checkBox = node; }} />
         <div className="btn-group">
