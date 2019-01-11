@@ -10,7 +10,9 @@ const TestSystemLists = ({ listName, children }) => {
     <div className="test-system-lists">
       <h2>{listName}</h2>
       {children}
-      <Button className="btn btn-outline-danger" value="Clear List" />
+      <div className="test-system-lists-btn">
+        <Button className="btn btn-outline-danger" value="Clear List" />
+      </div>
     </div>
   );
 };

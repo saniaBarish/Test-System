@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import './Question.css';
+
 import { deleteQuestion } from '../../../../reducers/questionReducer';
 
 import TrashButton from '../../../TrashButton';
@@ -47,12 +49,14 @@ class Question extends Component {
     return (
       <div className="question">
         <div className="list-group-item list-group-item-action">
-          <div className="element-body">
-            <div className="element-name">
+          <div className="question-body">
+            <CheckBox id={element.id} />
+            <div className="question-btn">
+              <TrashButton onClick={() => this.props.deleteQuestion({ id: element.id })} />
+            </div>
+            <div className="question-name">
               {element.name}
             </div>
-            <TrashButton onClick={() => this.props.deleteQuestion({ id: element.id })} />
-            <CheckBox id={element.id} />
           </div>
         </div>
       </div>

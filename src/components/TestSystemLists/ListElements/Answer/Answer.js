@@ -64,9 +64,12 @@ class Answer extends Component {
   render() {
     const { element, serialNumber } = this.props;
     const { modalVisible } = this.state;
+    const listStyle = {
+      backgroundColor: element.status ? '#23be3d36' : '#bd010136',
+    };
     return (
       <div className="answer">
-        <div className="list-group-item list-group-item-action">
+        <div className="list-group-item list-group-item-action" style={listStyle}>
           <div className="element-body">
             <div className="element-name">
               <CheckBox id={element.id} />
