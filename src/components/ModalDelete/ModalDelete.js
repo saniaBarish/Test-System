@@ -6,7 +6,9 @@ import './ModalDelete.css';
 import Button from '../Button';
 
 const ModalDelete = ({ title, bodyText, yesBtnText,
-  noBtnText, yesBtnClassName, noBtnClassName, visible }) => {
+  noBtnText, yesBtnClassName, noBtnClassName, visible,
+  onClickYesBtn, onClickNoBtn,
+}) => {
   if (!visible) {
     return null;
   }
@@ -18,7 +20,13 @@ const ModalDelete = ({ title, bodyText, yesBtnText,
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title">{title}</h5>
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                <button
+                  type="button"
+                  className="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                  onClick={onClickNoBtn}
+                >
                   <span aria-hidden="true">X</span>
                 </button>
               </div>
@@ -26,8 +34,16 @@ const ModalDelete = ({ title, bodyText, yesBtnText,
                 <p>{bodyText}</p>
               </div>
               <div className="modal-footer">
-                <Button className={noBtnClassName} value={noBtnText} />
-                <Button className={yesBtnClassName} value={yesBtnText} />
+                <Button
+                  className={noBtnClassName}
+                  value={noBtnText}
+                  onClick={onClickNoBtn}
+                />
+                <Button
+                  className={yesBtnClassName}
+                  value={yesBtnText}
+                  onClick={onClickYesBtn}
+                />
               </div>
             </div>
           </div>
@@ -55,6 +71,8 @@ ModalDelete.propTypes = {
   yesBtnClassName: PropTypes.string,
   noBtnClassName: PropTypes.string,
   visible: PropTypes.bool,
+  onClickNoBtn: PropTypes.func.isRequired,
+  onClickYesBtn: PropTypes.func.isRequired,
 };
 
 export default ModalDelete;

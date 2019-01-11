@@ -45,12 +45,16 @@ class Question extends Component {
   render() {
     const { element } = this.props;
     return (
-      <div className="element-body">
-        <div className="element-name">
-          {element.name}
+      <div className="question">
+        <div className="list-group-item list-group-item-action">
+          <div className="element-body">
+            <div className="element-name">
+              {element.name}
+            </div>
+            <TrashButton onClick={() => this.props.deleteQuestion({ id: element.id })} />
+            <CheckBox id={element.id} />
+          </div>
         </div>
-        <TrashButton onClick={() => this.props.deleteQuestion({ id: element.id })} />
-        <CheckBox id={element.id} />
       </div>
     );
   }

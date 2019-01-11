@@ -1,7 +1,5 @@
-.modal-delete{
-  height: 0;
-  width: 0;
-  float: left;
+.modal {
+  background-color: rgba(66, 65, 65, 0.6);
 }
 
 .modal-delete .bd-example.bd-example-modal .modal{
@@ -9,7 +7,7 @@
 }
 
 .modal-dialog {
-  margin: 10px 0 0 10px;
+  margin: 300px auto; 
 }
 
 .close span{

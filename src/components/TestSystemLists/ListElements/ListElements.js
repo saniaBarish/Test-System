@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import './ListElements.css';
 
 const ListElements = ({ elements, className, message, View }) => {
-  const list = elements.map((element) => {
+  const list = elements.map((element, i) => {
     return (
-      <div key={element.name} className={className}>
-        <View element={element} />
-      </div>
+      // <div key={element.name} className={className}>
+      //   <View element={element} />
+      // </div>
+      <View element={element} key={element.id} serialNumber={i + 1} />
     );
   });
 
