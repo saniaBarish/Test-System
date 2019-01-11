@@ -13,10 +13,8 @@ const ListElements = ({ elements, className, message, View }) => {
   if (elements.length === 0) {
     return (
       <div className="elements">
-        <div key={message} className={className}>
-          <div className="element-body">
-            <div className="element-name">{message}</div>
-          </div>
+        <div className={className}>
+          <div className="element-name">{message}</div>
         </div>
       </div>
     );
