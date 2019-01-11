@@ -33,27 +33,62 @@ class Answer extends Component {
     }),
     deleteAnswer: PropTypes.func.isRequired,
     changeAnswerStatus: PropTypes.func.isRequired,
+    serialNumber: PropTypes.number.isRequired,
   }
 
   state = {
     modalVisible: false,
   }
 
+  onClickTrashBtn = () => {
+    this.setState({
+      modalVisible: true,
+    });
+  }
+
+  onDeleteAnswer = (id) => {
+    this.props.deleteAnswer({ id });
+    this.setState({
+      modalVisible: false,
+    });
+  }
+
+  onClickModalNo = () => {
+    this.setState({
+      modalVisible: false,
+    });
+  }
+
   render() {
-    const { element } = this.props;
+    const { element, serialNumber } = this.props;
     const { modalVisible } = this.state;
     return (
-      <div className="element-body">
-        <div className="element-name">
-          {element.name}
-          <ModalDelete visible={modalVisible} />
+      <div className="answer">
+        <div className="list-group-item list-group-item-action">
+          <div className="element-body">
+            <div className="element-name">
+              {`${serialNumber}) ${element.name}`}
+            </div>
+            <StatusButton
+              status={element.status}
+              onClick={() => this.props.changeAnswerStatus({
+                id: element.id,
+                status: !element.status,
+              })}
+            />
+            <TrashButton onClick={this.onClickTrashBtn} />
+            <CheckBox id={element.id} />
+          </div>
         </div>
-        <StatusButton
-          status={element.status}
-          onClick={() => this.props.changeAnswerStatus({ id: element.id, status: !element.status })}
-        />
-        <TrashButton onClick={() => this.props.deleteAnswer({ id: element.id })} />
-        <CheckBox id={element.id} />
+        <div className="modal-area">
+          <ModalDelete
+            title={`Delete answer №${serialNumber}`}
+            bodyText={`Are you sure you want to delete this answer: "${element.name}"`}
+            visible={modalVisible}
+            onClickNoBtn={this.onClickModalNo}
+            onClickYesBtn={() => this.onDeleteAnswer(element.id)}
+          />
+        </div>
       </div>
     );
   }
