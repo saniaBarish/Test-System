@@ -1,5 +1,9 @@
+.answer {
+  position: relative;
+}
 .answer .list-group-item.list-group-item-action{
-  float: left;
+  position: relative;
+  margin-bottom: 5px;
 }
 
 .element-body {
@@ -8,16 +12,18 @@
 }
 
 .element-body .btn-answer{
-  float: right;
+  position: absolute;
+  right: 0;
+  top: 0;
   width: 20%;
-  margin: 5px;
 }
 
 .element-body .element-name{
-  float: left;
+  position: relative;
   margin: 0;
   text-align: left;
-  width: 75%;
+  width: 80%;
+  min-height: 40px;
 }
 
 .element-body .btn-answer .status-button{
@@ -28,6 +34,14 @@
 .element-body .btn-answer .TrashButton{
   float: right;
   margin-right: 5px;
+}
+
+.element-body .btn-answer .TrashButton button{
+  background-color: white;
+}
+
+.element-body .btn-answer .TrashButton button:hover{
+  background-color: red;
 }
 
 .element-name .checkbox-label{
