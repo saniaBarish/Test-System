@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import './Answer.css';
+
 import { deleteAnswer, changeAnswerStatus } from '../../../../reducers/questionReducer';
 
 import ModalDelete from '../../../ModalDelete';
@@ -67,17 +69,20 @@ class Answer extends Component {
         <div className="list-group-item list-group-item-action">
           <div className="element-body">
             <div className="element-name">
+              <CheckBox id={element.id} />
               {`${serialNumber}) ${element.name}`}
             </div>
-            <StatusButton
-              status={element.status}
-              onClick={() => this.props.changeAnswerStatus({
-                id: element.id,
-                status: !element.status,
-              })}
-            />
-            <TrashButton onClick={this.onClickTrashBtn} />
-            <CheckBox id={element.id} />
+            <div className="btn-answer">
+              <StatusButton
+                status={element.status}
+                onClick={() => this.props.changeAnswerStatus({
+                  id: element.id,
+                  status: !element.status,
+                })}
+                className="btn btn"
+              />
+              <TrashButton onClick={this.onClickTrashBtn} />
+            </div>
           </div>
         </div>
         <div className="modal-area">

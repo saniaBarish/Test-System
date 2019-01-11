@@ -1,0 +1,36 @@
+.answer .list-group-item.list-group-item-action{
+  float: left;
+}
+
+.element-body {
+  float: none;
+  position: relative;
+}
+
+.element-body .btn-answer{
+  float: right;
+  width: 20%;
+  margin: 5px;
+}
+
+.element-body .element-name{
+  float: left;
+  margin: 0;
+  text-align: left;
+  width: 75%;
+}
+
+.element-body .btn-answer .status-button{
+  float: right;
+  margin-right: 5px;
+}
+
+.element-body .btn-answer .TrashButton{
+  float: right;
+  margin-right: 5px;
+}
+
+.element-name .checkbox-label{
+  float: left;
+  margin-right: 5px;
+}
