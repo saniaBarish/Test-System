@@ -8,10 +8,10 @@
   width: 90%;
 }
 
-.add-question .button button{
-  width: 150px;
-}
-
 .add-question .btn-group{
   margin-bottom: 30px;
+}
+
+.add-question .btn-group .button{
+  margin: 0 75px;
 }

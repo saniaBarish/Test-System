@@ -18,6 +18,8 @@
   background-color: aliceblue;
 }
 
-.button{
+.login-page .button{
   margin: 5px auto;
+  width: 50%;
+  min-width: max-content;
 }

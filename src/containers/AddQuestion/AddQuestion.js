@@ -23,6 +23,7 @@ class AddQuestion extends Component {
   static propTypes = {
     addAnswer: PropTypes.func.isRequired,
     addQuestion: PropTypes.func.isRequired,
+    deleteAllAnswer: PropTypes.func.isRequired,
     answers: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string,
       name: PropTypes.string,
@@ -51,7 +52,11 @@ class AddQuestion extends Component {
         <h2>Create Question</h2>
         <Input placeholder="Enter question" refInput={(node) => { this.questionInput = node; }} />
         <TestSystemLists type="answers" listName="Answer List">
-          <ListElements elements={this.props.answers} View={Answer} />
+          <ListElements
+            elements={this.props.answers}
+            onClickClearList={this.props.deleteAllAnswer}
+            View={Answer}
+          />
         </TestSystemLists>
         <Input placeholder="Enter answer" refInput={(node) => { this.answerInput = node; }} />
         <CheckBox label="current answer" refCheckBox={(node) => { this.checkBox = node; }} />

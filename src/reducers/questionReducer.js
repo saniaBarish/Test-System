@@ -5,7 +5,9 @@ import { get, uniqueId } from 'lodash';
 export const addQuestion = createAction('ADD_QUESTION');
 export const addAnswer = createAction('ADD_ANSWER');
 export const deleteAnswer = createAction('DELETE_ANSWER');
+export const deleteAllAnswer = createAction('DELETE_ALL_ANSWER');
 export const deleteQuestion = createAction('DELETE_QUESTION');
+export const deleteAllQuestion = createAction('DELETE_ALL_QUESTION');
 export const changeQuestionChecked = createAction('CHANGE_QUASTION_CHACKED');
 export const changeAnswerChecked = createAction('CHANGE_ANSWER_CHACKED');
 export const changeAnswerStatus = createAction('CHANGE_ANSWER_STATUS');
@@ -55,6 +57,8 @@ export default handleActions({
       return answer;
     }),
   }),
+  [deleteAllAnswer]: (state) => ({ ...state, answers: [] }),
+  [deleteAllQuestion]: (state) => ({ ...state, questions: [] }),
 },
 {
   questions: [],

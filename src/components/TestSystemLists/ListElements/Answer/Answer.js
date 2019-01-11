@@ -71,8 +71,8 @@ class Answer extends Component {
       <div className="answer">
         <div className="list-group-item list-group-item-action" style={listStyle}>
           <div className="element-body">
+            <CheckBox id={element.id} />
             <div className="element-name">
-              <CheckBox id={element.id} />
               {`${serialNumber}) ${element.name}`}
             </div>
             <div className="btn-answer">

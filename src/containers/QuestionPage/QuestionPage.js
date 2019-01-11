@@ -9,6 +9,8 @@ import {
   answersSelector,
   addAnswer,
   addQuestion,
+  deleteAllAnswer,
+  deleteAllQuestion,
 } from '../../reducers/questionReducer';
 
 import TestSystemLists from '../../components/TestSystemLists';
@@ -25,6 +27,8 @@ const mapDispatchToProps = (dispatch) => ({
   actions: {
     addAnswer: (payload) => dispatch(addAnswer(payload)),
     addQuestion: (payload) => dispatch(addQuestion(payload)),
+    deleteAllAnswer: () => dispatch(deleteAllAnswer()),
+    deleteAllQuestion: () => dispatch(deleteAllQuestion()),
   },
 });
 
@@ -32,12 +36,17 @@ const QuestionPage = ({ answers, questions, actions }) => {
   return (
     <div className="question-page">
       <TestSystemLists>
-        <ListElements elements={questions} View={Question} />
+        <ListElements
+          elements={questions}
+          View={Question}
+          onClickClearList={actions.deleteAllQuestion}
+        />
       </TestSystemLists>
       <AddQuestion
         answers={answers}
         addAnswer={actions.addAnswer}
         addQuestion={actions.addQuestion}
+        deleteAllAnswer={actions.deleteAllAnswer}
       />
     </div>
   );
