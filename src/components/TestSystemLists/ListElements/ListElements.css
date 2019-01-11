@@ -2,3 +2,7 @@
   border-radius: 10px;
   margin-bottom: 1px;
 }
+
+.elements .button {
+  margin: 0 auto;
+}

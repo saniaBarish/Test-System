@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 import './ListElements.css';
 
-const ListElements = ({ elements, className, message, View }) => {
+import Button from '../../Button';
+
+const ListElements = ({ elements, className, message, View, onClickClearList }) => {
   const list = elements.map((element, i) => {
     return (
       <View element={element} key={element.id} serialNumber={i + 1} />
@@ -23,6 +25,11 @@ const ListElements = ({ elements, className, message, View }) => {
   return (
     <div className="elements">
       {list}
+      <Button
+        className="btn btn-outline-danger"
+        value="Clear List"
+        onClick={onClickClearList}
+      />
     </div>
   );
 };
@@ -38,6 +45,7 @@ ListElements.propTypes = {
   message: PropTypes.string,
   className: PropTypes.string,
   View: PropTypes.func.isRequired,
+  onClickClearList: PropTypes.func.isRequired,
 };
 
 export default ListElements;
