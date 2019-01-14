@@ -54,7 +54,7 @@ class AddQuestion extends Component {
         <TestSystemLists type="answers" listName="Answer List">
           <ListElements
             elements={this.props.answers}
-            onClickClearList={this.props.deleteAllAnswer}
+            deleteAllElements={this.props.deleteAllAnswer}
             View={Answer}
           />
         </TestSystemLists>

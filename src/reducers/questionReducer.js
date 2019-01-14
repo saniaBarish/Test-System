@@ -17,6 +17,7 @@ export default handleActions({
     questions: [...questions, {
       id: uniqueId('question_'),
       name,
+      type: 'question',
       answers: [...answers],
       checked: false,
     }],
@@ -28,6 +29,7 @@ export default handleActions({
       id: uniqueId('answer_'),
       name,
       status,
+      type: 'answer',
       checked: false,
     }],
   }),

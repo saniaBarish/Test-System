@@ -22,6 +22,7 @@ class Question extends Component {
       answers: [{
         id: 'answer_1',
         name: 'No answer',
+        type: 'question',
         status: false,
         checked: false,
       }],
