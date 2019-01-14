@@ -39,7 +39,7 @@ const QuestionPage = ({ answers, questions, actions }) => {
         <ListElements
           elements={questions}
           View={Question}
-          onClickClearList={actions.deleteAllQuestion}
+          deleteAllElements={actions.deleteAllQuestion}
         />
       </TestSystemLists>
       <AddQuestion

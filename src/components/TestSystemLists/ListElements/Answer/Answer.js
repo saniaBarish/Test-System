@@ -21,6 +21,7 @@ class Answer extends Component {
     element: {
       id: 'answer_',
       name: 'No answer added...',
+      type: 'answer',
       status: false,
       checked: false,
     },
