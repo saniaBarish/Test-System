@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './Input.css';
 
 const Input = ({ type, id, className, placeholder,
-  onChange, onBlur, errorMessage, onFocus,
+  onChange, onBlur, errorMessage, onFocus, onKeyDown,
   label, name, refInput,
 }) => {
   const alert = errorMessage ? <span>{errorMessage}</span> : null;
@@ -22,6 +22,7 @@ const Input = ({ type, id, className, placeholder,
         onBlur={onBlur}
         onFocus={onFocus}
         ref={refInput}
+        onKeyDown={onKeyDown}
       />
       {alert}
     </label>
@@ -39,6 +40,7 @@ Input.defaultProps = {
   onBlur: () => {},
   onFocus: () => {},
   refInput: () => {},
+  onKeyDown: () => {},
   errorMessage: '',
 };
 
@@ -54,6 +56,7 @@ Input.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string,
   refInput: PropTypes.func,
+  onKeyDown: PropTypes.func,
 };
 
 export default Input;

@@ -15,8 +15,8 @@ import {
 
 import TestSystemLists from '../../components/TestSystemLists';
 import AddQuestion from '../AddQuestion';
-import ListElements from '../../components/TestSystemLists/ListElements';
-import Question from '../../components/TestSystemLists/ListElements/Question';
+import ListElements from '../../components/ListElements';
+import Question from '../../components/Question';
 
 const mapStateToProps = (state) => ({
   questions: questionsSelector(state),

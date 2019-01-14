@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 
 import './ListElements.css';
 
-import Button from '../../Button';
-import ModalDelete from '../../ModalDelete';
+import Button from '../Button';
+import ModalDelete from '../ModalDelete';
 
 class ListElements extends Component {
   static defaultProps = {
-    elements: [],
+    elements: [{}],
     message: 'List is empty.',
     className: 'list-group-item list-group-item-action',
   }

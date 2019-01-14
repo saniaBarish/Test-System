@@ -4,12 +4,10 @@ import { connect } from 'react-redux';
 
 import './Answer.css';
 
-import { deleteAnswer, changeAnswerStatus } from '../../../../reducers/questionReducer';
+import { deleteAnswer, changeAnswerStatus } from '../../reducers/questionReducer';
 
-import ModalDelete from '../../../ModalDelete';
-import StatusButton from '../../../StatusButton';
-import TrashButton from '../../../TrashButton';
-import CheckBox from '../../../CheckBox';
+import ModalDelete from '../ModalDelete';
+import OpenAnswer from './OpenAnswer';
 
 const mapDispatchToProps = (dispatch) => ({
   deleteAnswer: (payload) => dispatch(deleteAnswer(payload)),
@@ -72,21 +70,16 @@ class Answer extends Component {
       <div className="answer">
         <div className="list-group-item list-group-item-action" style={listStyle}>
           <div className="element-body">
-            <CheckBox id={element.id} />
-            <div className="element-name">
-              {`${serialNumber}) ${element.name}`}
-            </div>
-            <div className="btn-answer">
-              <StatusButton
-                status={element.status}
-                onClick={() => this.props.changeAnswerStatus({
-                  id: element.id,
-                  status: !element.status,
-                })}
-                className="btn btn"
-              />
-              <TrashButton onClick={this.onClickTrashBtn} />
-            </div>
+            <OpenAnswer
+              id={element.id}
+              name={element.name}
+              status={element.status}
+              serialNumber={serialNumber}
+              onClickTrashBtn={this.onClickTrashBtn}
+              changeAnswerStatus={() => this.props.changeAnswerStatus({
+                id: element.id, status: !element.status,
+              })}
+            />
           </div>
         </div>
         <div className="modal-area">

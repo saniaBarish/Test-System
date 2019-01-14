@@ -4,11 +4,10 @@ import { connect } from 'react-redux';
 
 import './Question.css';
 
-import { deleteQuestion } from '../../../../reducers/questionReducer';
+import { deleteQuestion } from '../../reducers/questionReducer';
 
-import TrashButton from '../../../TrashButton';
-import CheckBox from '../../../CheckBox';
-import ModalDelete from '../../../ModalDelete';
+import OpenQuestion from './OpenQuestion';
+import ModalDelete from '../ModalDelete';
 
 const mapDispatchToProps = (dispatch) => ({
   deleteQuestion: (payload) => dispatch(deleteQuestion(payload)),
@@ -19,10 +18,11 @@ class Question extends Component {
     element: {
       id: 'question_1',
       name: 'No question',
+      type: 'question',
       answers: [{
         id: 'answer_1',
         name: 'No answer',
-        type: 'question',
+        type: 'answer',
         status: false,
         checked: false,
       }],
@@ -35,9 +35,11 @@ class Question extends Component {
     element: PropTypes.shape({
       id: PropTypes.string,
       name: PropTypes.string,
+      type: PropTypes.string,
       answers: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string,
         name: PropTypes.string,
+        type: PropTypes.string,
         status: PropTypes.bool,
         checked: PropTypes.bool,
       })),
@@ -76,13 +78,12 @@ class Question extends Component {
       <div className="question">
         <div className="list-group-item list-group-item-action">
           <div className="question-body">
-            <CheckBox id={element.id} />
-            <div className="question-btn">
-              <TrashButton onClick={this.onClickTrashBtn} />
-            </div>
-            <div className="question-name">
-              {`${serialNumber}) ${element.name}`}
-            </div>
+            <OpenQuestion
+              id={element.id}
+              name={element.name}
+              serialNumber={serialNumber}
+              onClickTrashBtn={this.onClickTrashBtn}
+            />
           </div>
         </div>
         <ModalDelete

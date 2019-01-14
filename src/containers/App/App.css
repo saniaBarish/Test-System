@@ -13,3 +13,7 @@
   height: 60px;
   color: whitesmoke;
 }
+
+.list-group-item.list-group-item-action{
+  user-select: none;
+}

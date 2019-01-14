@@ -11,6 +11,7 @@ export const deleteAllQuestion = createAction('DELETE_ALL_QUESTION');
 export const changeQuestionChecked = createAction('CHANGE_QUASTION_CHACKED');
 export const changeAnswerChecked = createAction('CHANGE_ANSWER_CHACKED');
 export const changeAnswerStatus = createAction('CHANGE_ANSWER_STATUS');
+export const changeAnswerName = createAction('CHANGE_ANSWER_NAME');
 
 export default handleActions({
   [addQuestion]: ({ questions, answers }, { payload: { name } }) => ({
@@ -61,6 +62,15 @@ export default handleActions({
   }),
   [deleteAllAnswer]: (state) => ({ ...state, answers: [] }),
   [deleteAllQuestion]: (state) => ({ ...state, questions: [] }),
+  [changeAnswerName]: ({ questions, answers }, { payload: { id, name } }) => ({
+    questions,
+    answers: answers.map((answer) => {
+      if (answer.id === id) {
+        return ({ ...answer, name });
+      }
+      return answer;
+    }),
+  }),
 },
 {
   questions: [],

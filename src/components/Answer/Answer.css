@@ -1,0 +1,12 @@
+.answer {
+  position: relative;
+}
+.answer .list-group-item.list-group-item-action{
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.element-body {
+  float: none;
+  position: relative;
+}
