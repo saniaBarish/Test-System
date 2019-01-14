@@ -36,7 +36,7 @@ const ListElements = ({ elements, className, message, View, onClickClearList }) 
 
 ListElements.defaultProps = {
   elements: [],
-  message: 'No answers added...',
+  message: 'List is empty.',
   className: 'list-group-item list-group-item-action',
 };
 
