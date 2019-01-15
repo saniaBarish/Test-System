@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 
 import './TextArea.css';
 
-const TextArea = ({ rows, defaultValue, onKeyDownEnterShift }) => {
+const TextArea = ({ rows, defaultValue, textAreaRef }) => {
   return (
     <div className="TextArea">
       <textarea
         rows={rows}
         defaultValue={defaultValue}
-        onKeyDown={onKeyDownEnterShift}
+        ref={textAreaRef}
       />
     </div>
   );
@@ -18,13 +18,13 @@ const TextArea = ({ rows, defaultValue, onKeyDownEnterShift }) => {
 TextArea.defaultProps = {
   rows: '3',
   defaultValue: '',
-  onKeyDownEnterShift: () => {},
+  textAreaRef: () => {},
 };
 
 TextArea.propTypes = {
   rows: PropTypes.string,
   defaultValue: PropTypes.string,
-  onKeyDownEnterShift: PropTypes.func,
+  textAreaRef: PropTypes.func,
 };
 
 export default TextArea;

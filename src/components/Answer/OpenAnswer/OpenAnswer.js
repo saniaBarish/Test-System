@@ -5,13 +5,12 @@ import './OpenAnswer.css';
 
 import StatusButton from '../../StatusButton';
 import TrashButton from '../../TrashButton';
-import CheckBox from '../../CheckBox';
+import Button from '../../Button';
 
 const OpenAnswer = ({ id, name, status, serialNumber,
-  onClickTrashBtn, changeAnswerStatus }) => {
+  onClickTrashBtn, changeAnswerStatus, onClickChangeBtn }) => {
   return (
     <div className="open-answer">
-      <CheckBox id={id} />
       <div className="btn-answer">
         <StatusButton
           status={status}
@@ -25,6 +24,11 @@ const OpenAnswer = ({ id, name, status, serialNumber,
       </div>
       <div className="element-name">
         {`${serialNumber}) ${name}`}
+        <Button
+          className="btn btn-info"
+          value="Edit"
+          onClick={onClickChangeBtn}
+        />
       </div>
     </div>
   );
@@ -37,6 +41,7 @@ OpenAnswer.propTypes = {
   serialNumber: PropTypes.number,
   onClickTrashBtn: PropTypes.func.isRequired,
   changeAnswerStatus: PropTypes.func.isRequired,
+  onClickChangeBtn: PropTypes.func.isRequired,
 };
 
 OpenAnswer.defaultProps = {

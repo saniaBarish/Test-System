@@ -4,16 +4,24 @@ import { connect } from 'react-redux';
 
 import './Answer.css';
 
-import { ANSWERS, STATUS } from '../../helppers/constants';
+import { ANSWERS, STATUS, NAME, CHECKED } from '../../helppers/constants';
 import { deleteOneElement, changeElement } from '../../reducers/questionReducer';
 
 import ModalDelete from '../ModalDelete';
 import OpenAnswer from './OpenAnswer';
+import ModalChange from '../ModalChange';
+import CheckBox from '../CheckBox';
 
 const mapDispatchToProps = (dispatch) => ({
   deleteAnswer: (id) => dispatch(deleteOneElement({ type: ANSWERS, id })),
   changeAnswerStatus: (id, value) => dispatch(
     changeElement({ type: ANSWERS, name: STATUS, id, value }),
+  ),
+  changeAnswerName: (id, value) => dispatch(
+    changeElement({ type: ANSWERS, name: NAME, id, value }),
+  ),
+  changeAnswerChecked: (id, value) => dispatch(
+    changeElement({ type: ANSWERS, name: CHECKED, id, value }),
   ),
 });
 
@@ -37,35 +45,45 @@ class Answer extends Component {
     }),
     deleteAnswer: PropTypes.func.isRequired,
     changeAnswerStatus: PropTypes.func.isRequired,
+    changeAnswerName: PropTypes.func.isRequired,
+    changeAnswerChecked: PropTypes.func.isRequired,
     serialNumber: PropTypes.number.isRequired,
   }
 
   state = {
-    modalVisible: false,
+    delModalVisible: false,
+    changeModalVisible: false,
   }
 
-  onClickTrashBtn = () => {
+  openModal = (name) => {
     this.setState({
-      modalVisible: true,
+      [name]: true,
+    });
+  }
+
+  closeModal = (name) => {
+    this.setState({
+      [name]: false,
     });
   }
 
   onDeleteAnswer = (id) => {
     this.props.deleteAnswer(id);
     this.setState({
-      modalVisible: false,
+      delModalVisible: false,
     });
   }
 
-  onClickModalNo = () => {
+  onChangeAnswerName = (id, value) => {
+    this.props.changeAnswerName(id, value);
     this.setState({
-      modalVisible: false,
+      changeModalVisible: false,
     });
   }
 
   render() {
     const { element, serialNumber } = this.props;
-    const { modalVisible } = this.state;
+    const { delModalVisible, changeModalVisible } = this.state;
     const listStyle = {
       backgroundColor: element.status ? '#23be3d36' : '#bd010136',
     };
@@ -73,12 +91,19 @@ class Answer extends Component {
       <div className="answer">
         <div className="list-group-item list-group-item-action" style={listStyle}>
           <div className="element-body">
+            <CheckBox
+              id={element.id}
+              onClick={({
+                target: { checked },
+              }) => this.props.changeAnswerChecked(element.id, checked)}
+            />
             <OpenAnswer
               id={element.id}
               name={element.name}
               status={element.status}
               serialNumber={serialNumber}
-              onClickTrashBtn={this.onClickTrashBtn}
+              onClickChangeBtn={() => this.openModal('changeModalVisible')}
+              onClickTrashBtn={() => this.openModal('delModalVisible')}
               changeAnswerStatus={() => this.props.changeAnswerStatus(element.id, !element.status)}
             />
           </div>
@@ -87,9 +112,19 @@ class Answer extends Component {
           <ModalDelete
             title={`Delete answer №${serialNumber}`}
             bodyText={`Are you sure you want to delete this answer: "${element.name}"`}
-            visible={modalVisible}
-            onClickNoBtn={this.onClickModalNo}
+            visible={delModalVisible}
+            onClickNoBtn={() => this.closeModal('delModalVisible')}
             onClickYesBtn={() => this.onDeleteAnswer(element.id)}
+          />
+          <ModalChange
+            title={`Change answer №${serialNumber}`}
+            visible={changeModalVisible}
+            defaultValue={element.name}
+            yesBtnText="Save"
+            yesBtnClassName="btn btn-success"
+            onClickNoBtn={() => this.closeModal('changeModalVisible')}
+            modalRef={(node) => { this.textArea = node; }}
+            onClickYesBtn={() => this.onChangeAnswerName(element.id, this.textArea.value)}
           />
         </div>
       </div>

@@ -29,11 +29,6 @@
   background-color: #dc3545;
 }
 
-.open-answer .checkbox-label{
-  float: left;
-  margin-right: 4px;
-}
-
 .open-answer .element-name .TextArea{
   width: 70%;
   margin-left: 30px;

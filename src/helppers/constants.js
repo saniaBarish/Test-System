@@ -16,6 +16,8 @@ export const QUESTION_PAGE = 'questions';
 export const ANSWERS = 'answers';
 export const QUESTIONS = 'questions';
 export const STATUS = 'status';
+export const NAME = 'name';
+export const CHECKED = 'checked';
 
 
 export const validators = [
