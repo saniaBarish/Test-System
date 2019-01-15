@@ -54,7 +54,8 @@ const answerValid = (answers) => {
   }
   const right = answers.some((answer) => answer.status) ? '' : 'No right answer.';
   const wrong = answers.some((answer) => !answer.status) ? '' : 'No wrong answer.';
-  return right || wrong;
+  const empty = answers.some((answer) => validator.isEmpty(answer.name)) ? 'You have empty answer' : '';
+  return right || wrong || empty;
 };
 
 const questionValid = (value) => {
