@@ -4,13 +4,14 @@ import { connect } from 'react-redux';
 
 import './Question.css';
 
-import { deleteQuestion } from '../../reducers/questionReducer';
+import { QUESTIONS } from '../../helppers/constants';
+import { deleteOneElement } from '../../reducers/questionReducer';
 
 import OpenQuestion from './OpenQuestion';
 import ModalDelete from '../ModalDelete';
 
 const mapDispatchToProps = (dispatch) => ({
-  deleteQuestion: (payload) => dispatch(deleteQuestion(payload)),
+  deleteQuestion: (id) => dispatch(deleteOneElement({ type: QUESTIONS, id })),
 });
 
 class Question extends Component {
@@ -60,7 +61,7 @@ class Question extends Component {
   }
 
   onDeleteQuestion = (id) => {
-    this.props.deleteQuestion({ id });
+    this.props.deleteQuestion(id);
     this.setState({
       modalVisible: false,
     });

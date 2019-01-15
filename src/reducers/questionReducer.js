@@ -4,21 +4,16 @@ import { get, uniqueId } from 'lodash';
 
 export const addQuestion = createAction('ADD_QUESTION');
 export const addAnswer = createAction('ADD_ANSWER');
-export const deleteAnswer = createAction('DELETE_ANSWER');
-export const deleteAllAnswer = createAction('DELETE_ALL_ANSWER');
-export const deleteQuestion = createAction('DELETE_QUESTION');
-export const deleteAllQuestion = createAction('DELETE_ALL_QUESTION');
-export const changeQuestionChecked = createAction('CHANGE_QUASTION_CHACKED');
-export const changeAnswerChecked = createAction('CHANGE_ANSWER_CHACKED');
-export const changeAnswerStatus = createAction('CHANGE_ANSWER_STATUS');
-export const changeAnswerName = createAction('CHANGE_ANSWER_NAME');
+export const deleteOneElement = createAction('DELETE_ONE_ELEMENT_QUESTION_REDUCER');
+export const deleteAllElements = createAction('DELETE_ALL_ELEMENT_QUESTION_REDUCER');
+export const changeElement = createAction('CHANGE_ELEMENT_QUESTION_REDUCER');
 
 export default handleActions({
   [addQuestion]: ({ questions, answers }, { payload: { name } }) => ({
     questions: [...questions, {
       id: uniqueId('question_'),
       name,
-      type: 'question',
+      type: 'questions',
       answers: [...answers],
       checked: false,
     }],
@@ -30,45 +25,25 @@ export default handleActions({
       id: uniqueId('answer_'),
       name,
       status,
-      type: 'answer',
+      type: 'answers',
       checked: false,
     }],
   }),
-  [deleteAnswer]: ({ questions, answers }, { payload: { id } }) => ({
-    questions,
-    answers: answers.filter((answer) => answer.id !== id),
+  [deleteOneElement]: (state, { payload: { type, id } }) => ({
+    ...state,
+    [type]: state[type].filter((elem) => elem.id !== id),
   }),
-  [deleteQuestion]: ({ questions, answers }, { payload: { id } }) => ({
-    answers,
-    questions: questions.filter((question) => question.id !== id),
-  }),
-  [changeAnswerChecked]: ({ questions, answers }, { payload: { id, checked } }) => ({
-    questions,
-    answers: answers.map((answer) => {
-      if (answer.id === id) {
-        return ({ ...answer, checked });
+  [deleteAllElements]: (state, { payload: { type } }) => ({ ...state, [type]: [] }),
+  [changeElement]: (state, { payload: { type, id, name, value } }) => ({
+    ...state,
+    [type]: state[type].map((elem) => {
+      if (elem.id === id) {
+        return ({
+          ...elem,
+          [name]: value,
+        });
       }
-      return answer;
-    }),
-  }),
-  [changeAnswerStatus]: ({ questions, answers }, { payload: { id, status } }) => ({
-    questions,
-    answers: answers.map((answer) => {
-      if (answer.id === id) {
-        return ({ ...answer, status });
-      }
-      return answer;
-    }),
-  }),
-  [deleteAllAnswer]: (state) => ({ ...state, answers: [] }),
-  [deleteAllQuestion]: (state) => ({ ...state, questions: [] }),
-  [changeAnswerName]: ({ questions, answers }, { payload: { id, name } }) => ({
-    questions,
-    answers: answers.map((answer) => {
-      if (answer.id === id) {
-        return ({ ...answer, name });
-      }
-      return answer;
+      return elem;
     }),
   }),
 },

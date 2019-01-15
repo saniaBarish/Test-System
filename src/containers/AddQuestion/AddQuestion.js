@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './AddQuestion.css';
 
 import verifyValidation from '../../helppers/verifyValidation';
-import { ANSWER, QUESTION } from '../../helppers/constants';
+import { ANSWERS, QUESTIONS } from '../../helppers/constants';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -65,8 +65,8 @@ class AddQuestion extends Component {
 
   onClickSaveQuestion = () => {
     this.setState({
-      questionErrorMessage: verifyValidation(QUESTION, this.questionInput.value),
-      answerErrorMessage: verifyValidation(ANSWER, this.props.answers),
+      questionErrorMessage: verifyValidation(QUESTIONS, this.questionInput.value),
+      answerErrorMessage: verifyValidation(ANSWERS, this.props.answers),
     }, this.onSubmit);
   }
 

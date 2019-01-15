@@ -31,8 +31,8 @@ class ListElements extends Component {
     });
   }
 
-  onDeleteAllElements = () => {
-    this.props.deleteAllElements();
+  onDeleteAllElements = (type) => {
+    this.props.deleteAllElements(type);
     this.setState({
       modalVisible: false,
     });
@@ -75,8 +75,8 @@ class ListElements extends Component {
         <ModalDelete
           visible={modalVisible}
           onClickNoBtn={this.onClickModalNo}
-          onClickYesBtn={this.onDeleteAllElements}
-          title={`Delete all ${elements[0].type}s.`}
+          onClickYesBtn={() => this.onDeleteAllElements(elements[0].type)}
+          title={`Delete all ${elements[0].type}.`}
           bodyText={`Are you sure you want to delete all ${elements[0].type}s?`}
         />
       </div>

@@ -4,14 +4,17 @@ import { connect } from 'react-redux';
 
 import './Answer.css';
 
-import { deleteAnswer, changeAnswerStatus } from '../../reducers/questionReducer';
+import { ANSWERS, STATUS } from '../../helppers/constants';
+import { deleteOneElement, changeElement } from '../../reducers/questionReducer';
 
 import ModalDelete from '../ModalDelete';
 import OpenAnswer from './OpenAnswer';
 
 const mapDispatchToProps = (dispatch) => ({
-  deleteAnswer: (payload) => dispatch(deleteAnswer(payload)),
-  changeAnswerStatus: (payload) => dispatch(changeAnswerStatus(payload)),
+  deleteAnswer: (id) => dispatch(deleteOneElement({ type: ANSWERS, id })),
+  changeAnswerStatus: (id, value) => dispatch(
+    changeElement({ type: ANSWERS, name: STATUS, id, value }),
+  ),
 });
 
 class Answer extends Component {
@@ -48,7 +51,7 @@ class Answer extends Component {
   }
 
   onDeleteAnswer = (id) => {
-    this.props.deleteAnswer({ id });
+    this.props.deleteAnswer(id);
     this.setState({
       modalVisible: false,
     });
@@ -76,9 +79,7 @@ class Answer extends Component {
               status={element.status}
               serialNumber={serialNumber}
               onClickTrashBtn={this.onClickTrashBtn}
-              changeAnswerStatus={() => this.props.changeAnswerStatus({
-                id: element.id, status: !element.status,
-              })}
+              changeAnswerStatus={() => this.props.changeAnswerStatus(element.id, !element.status)}
             />
           </div>
         </div>

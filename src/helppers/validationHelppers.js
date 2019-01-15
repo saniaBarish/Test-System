@@ -1,5 +1,5 @@
 import validator from 'validator';
-import { email, password, firstName, lastName, userName, confirmPassword, ANSWER, QUESTION } from './constants';
+import { email, password, firstName, lastName, userName, confirmPassword, ANSWERS, QUESTIONS } from './constants';
 
 const emailValid = (value) => {
   if (validator.isEmpty(value)) {
@@ -68,8 +68,8 @@ const validFunctions = {
   [lastName]: firstNameValid,
   [userName]: userNameValid,
   [confirmPassword]: confirmPasswordValid,
-  [ANSWER]: answerValid,
-  [QUESTION]: questionValid,
+  [ANSWERS]: answerValid,
+  [QUESTIONS]: questionValid,
 };
 
 

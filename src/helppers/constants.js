@@ -13,8 +13,9 @@ export const authorization = 'authorization';
 export const CREATE_TEST = 'create_test';
 export const tests = 'tests';
 export const QUESTION_PAGE = 'questions';
-export const ANSWER = 'answer';
-export const QUESTION = 'question';
+export const ANSWERS = 'answers';
+export const QUESTIONS = 'questions';
+export const STATUS = 'status';
 
 
 export const validators = [
@@ -25,6 +26,6 @@ export const validators = [
   userName,
   confirmPassword,
   err,
-  ANSWER,
-  QUESTION,
+  ANSWERS,
+  QUESTIONS,
 ];
