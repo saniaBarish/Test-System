@@ -9,11 +9,13 @@
 }
 
 .add-question .btn-group{
-  margin-bottom: 30px;
+  display: block;
+  padding: 0 30px 50px 30px 
 }
 
 .add-question .btn-group .button{
-  margin: 0 75px;
+  margin: 0 10% 5% 20%;
+  float: left;
 }
 
 .add-question .checkbox-input{

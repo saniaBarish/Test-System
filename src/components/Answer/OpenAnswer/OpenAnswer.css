@@ -34,13 +34,7 @@
   margin-right: 4px;
 }
 
-
-
-
-
-.edit-input .text-area{
-  overflow: scroll;
-  resize: horizontal;
-  display: block;
+.open-answer .element-name .TextArea{
   width: 70%;
+  margin-left: 30px;
 }
