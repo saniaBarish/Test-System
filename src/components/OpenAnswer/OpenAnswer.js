@@ -3,14 +3,19 @@ import PropTypes from 'prop-types';
 
 import './OpenAnswer.css';
 
-import StatusButton from '../../StatusButton';
-import TrashButton from '../../TrashButton';
-import Button from '../../Button';
+import StatusButton from '../StatusButton';
+import TrashButton from '../TrashButton';
+import Button from '../Button';
+import CheckBox from '../CheckBox';
 
 const OpenAnswer = ({ id, name, status, serialNumber,
-  onClickTrashBtn, changeAnswerStatus, onClickChangeBtn }) => {
+  onClickTrashBtn, changeAnswerStatus, onClickChangeBtn, onClickCheckBox }) => {
   return (
     <div className="open-answer">
+      <CheckBox
+        id={id}
+        onClick={onClickCheckBox}
+      />
       <div className="btn-answer">
         <StatusButton
           status={status}
@@ -39,6 +44,7 @@ OpenAnswer.propTypes = {
   name: PropTypes.string,
   status: PropTypes.bool,
   serialNumber: PropTypes.number,
+  onClickCheckBox: PropTypes.func.isRequired,
   onClickTrashBtn: PropTypes.func.isRequired,
   changeAnswerStatus: PropTypes.func.isRequired,
   onClickChangeBtn: PropTypes.func.isRequired,

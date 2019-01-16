@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import './OpenQuestion.css';
 
-import CheckBox from '../../CheckBox';
-import TrashButton from '../../TrashButton';
+import CheckBox from '../CheckBox';
+import TrashButton from '../TrashButton';
 
 const OpenQuestion = ({ id, name, serialNumber, onClickTrashBtn }) => {
   return (

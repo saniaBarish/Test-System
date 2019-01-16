@@ -7,8 +7,8 @@ import './Question.css';
 import { QUESTIONS } from '../../helppers/constants';
 import { deleteOneElement } from '../../reducers/questionReducer';
 
-import OpenQuestion from './OpenQuestion';
-import ModalDelete from '../ModalDelete';
+import OpenQuestion from '../../components/OpenQuestion';
+import ModalDelete from '../../components/ModalDelete';
 
 const mapDispatchToProps = (dispatch) => ({
   deleteQuestion: (id) => dispatch(deleteOneElement({ type: QUESTIONS, id })),

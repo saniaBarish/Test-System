@@ -7,10 +7,9 @@ import './Answer.css';
 import { ANSWERS, STATUS, NAME, CHECKED } from '../../helppers/constants';
 import { deleteOneElement, changeElement } from '../../reducers/questionReducer';
 
-import ModalDelete from '../ModalDelete';
-import OpenAnswer from './OpenAnswer';
-import ModalChange from '../ModalChange';
-import CheckBox from '../CheckBox';
+import ModalDelete from '../../components/ModalDelete';
+import OpenAnswer from '../../components/OpenAnswer';
+import ModalChange from '../../components/ModalChange';
 
 const mapDispatchToProps = (dispatch) => ({
   deleteAnswer: (id) => dispatch(deleteOneElement({ type: ANSWERS, id })),
@@ -91,12 +90,6 @@ class Answer extends Component {
       <div className="answer">
         <div className="list-group-item list-group-item-action" style={listStyle}>
           <div className="element-body">
-            <CheckBox
-              id={element.id}
-              onClick={({
-                target: { checked },
-              }) => this.props.changeAnswerChecked(element.id, checked)}
-            />
             <OpenAnswer
               id={element.id}
               name={element.name}
@@ -105,6 +98,9 @@ class Answer extends Component {
               onClickChangeBtn={() => this.openModal('changeModalVisible')}
               onClickTrashBtn={() => this.openModal('delModalVisible')}
               changeAnswerStatus={() => this.props.changeAnswerStatus(element.id, !element.status)}
+              onClickCheckBox={({
+                target: { checked },
+              }) => this.props.changeAnswerChecked(element.id, checked)}
             />
           </div>
         </div>

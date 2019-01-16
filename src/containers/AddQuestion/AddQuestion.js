@@ -11,7 +11,7 @@ import Button from '../../components/Button';
 import CheckBox from '../../components/CheckBox';
 import TestSystemLists from '../../components/TestSystemLists';
 import ListElements from '../../components/ListElements';
-import Answer from '../../components/Answer';
+import Answer from '../Answer';
 
 class AddQuestion extends Component {
   static defaultProps = {
